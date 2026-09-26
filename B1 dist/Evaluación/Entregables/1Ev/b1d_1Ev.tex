@@ -1,0 +1,220 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage{array,amsmath,fancybox,amsfonts,graphicx,amsthm,amssymb,wasysym,latexsym,slashed,anysize,subfigure,calc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,float,hyperref}
+\usepackage{lettrine}
+
+
+%lewis y química
+\usepackage{chemformula,elements}
+%chemformula, provides \ch{} with the !(<below>)(<formula>) syntax and \chlewis;
+%elements, provides \elconf and \writeelconf.
+%ex:
+%\ch{
+%  !(\elconf{Li})( "\chlewis{180.}{Li}" ) +
+%  !(\elconf{F})( "\chlewis{0.90:180:270:}{F}" )
+%   ->
+%  !(\writeelconf{2})( Li+ ) +
+%  !(\writeelconf{2,2+6})( "\chlewis{0:90:180:270:}{F}" {}- )
+%}
+
+
+%entorno para química: texto y math mode
+%\newcommand*\chem[1]{\textup{#1}}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+%column
+\usepackage{multicol}
+%uso: \begin{multicols}{3}
+
+%enumitem: configurar listas
+\usepackage{enumitem}
+
+%para los entornos de soluciones
+\usepackage{mdframed,xcolor,color}
+	%uso: 	entorno (begin,end): {mdframed}[backgroundcolor=brown!10] 
+
+%subrayado y highlight. Tiene que estar detrás de usepackage[color]
+\usepackage{soul}
+	%\textst{normal} 
+	\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}} %en cyan!
+		%\hl{highlighted text} %uso
+
+
+%tamaños fuentes extra: 8,9,14,17,20
+	\usepackage{extsizes}
+	
+ 	%fuente librebaskerville
+ 	\usepackage[T1]{fontenc}
+	\usepackage{librebaskerville}
+	
+	%fracciones $$ en texto más elaboradas
+	 \usepackage{xfrac}
+	 
+	%permitir que una ecuación larga esté separada por un salto de página
+	\allowdisplaybreaks[4]
+		
+	%gráficos varios 
+	\usepackage{graphics}
+	
+	%fancy tables
+	\usepackage{booktabs}
+	\usepackage[small,centerlast,up]{caption}
+
+	
+	%mejora en la exposición de guarismos
+	\usepackage{numprint}
+	
+\usepackage{everypage,draftwatermark} %Marca de agua
+\SetWatermarkText{\vspace*{2cm}
+
+\hspace*{2cm}\parbox{2\textwidth}{\centering DIST.\\B1-FyQ}}
+\SetWatermarkScale{1.5}
+\SetWatermarkLightness{0.9}
+
+\DeclareMathOperator{\lin}{lin}
+\DeclareMathOperator{\id}{\textbf{id}}
+\DeclareMathOperator{\modulo}{mod}
+
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\halmos}{
+\vspace*{-3ex}
+
+\begin{flushright}
+\rule{1mm}{2.5mm} \end{flushright}
+}
+\renewcommand{\qed}{\halmos}
+
+
+%versores: %uso: \uveci\ne\hat{\imath}_{\uvec{i}}+\uvec{j}+\uvec{k}$
+\usepackage{bm}
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\DeclareRobustCommand{\uvec}[1]{{%
+  \ifcsname uvec#1\endcsname
+     \csname uvec#1\endcsname
+   \else
+    \bm{\hat{\mathbf{#1}}}%
+   \fi
+}}
+
+
+%algún nuevo operador
+\DeclareMathOperator{\cotan}{cotan}
+
+
+%para textbf en entorno enumerate
+\renewcommand{\labelenumi}{%
+ \textbf{\theenumi}.
+}
+
+%a4
+\marginsize{1cm}{1cm}{1cm}{1cm}%requiere el paquete anysize,izq,dcha,arriba,abajo
+
+%a5
+%\marginsize{1cm}{1cm}{1cm}{.5cm}%requiere el paquete anysize,izq,dcha,arriba,abajo
+
+\newtheorem{teo}{{\sc \textbf{Teorema}}}
+\newtheorem{defi}{{\sc \textbf{Definición}}}
+\newtheorem{coro}{{\sc \textbf{Corolario}}}
+
+
+%opening
+\title{\textbf{	}}
+\date{}
+\pagestyle{fancy}
+\fancyhead[LO,RE]{{\small DOSSIER DE PROBLEMAS}}
+\fancyhead[RO,LE]{{\small B1-DIST. FÍSICA Y QUÍMICA}}
+%\fancyhead[CO,CE]{Ricardo Torres\\http://tinyurl.com/iesCMGfyq}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%	\section*{Ejercicios propuestos Tema 3: óptica ondulatoria}
+
+%\begin{center}
+%	\hl{2, 4, 10 p\'ag. 241}\hspace{2cm}\hl{24 p\'ag. 242}
+%	\end{center}
+
+%\vspace*{.1cm}
+%
+%	\section*{Ejercicios adicionales sobre la luz}
+%
+
+
+\begin{enumerate}
+  \setlength\itemsep{1.5em}
+    
+    
+    \item \textbf{(2 PUNTOS)} 
+    
+    Formula y nombra:
+    	%\begin{multicols}{2}
+    		\begin{enumerate}[label=\alph*)]
+    			\item Los ácidos ternarios de los tres primeros elementos del grupo 15.
+    			\item Las sales que forma el azufre con el segundo y tercer elemento del grupo cuyo último electrón corresponda a un estado $ns^2$.
+    			\item Los peróxidos que se forman con los metales alcalinos correspondientes a los periodos $3$ y $4$. 
+    			\item Las sales ternarias que forma el hierro con los aniones resultantes de la disociación completa de los ácidos ternarios correspondientes a los elementos con configuración $\elconf{se}$ y $\elconf{i}$.
+    		\end{enumerate}
+    		\qed
+    	%\end{multicols}
+    	
+    \item \textbf{(1 PUNTO)}
+    
+    	\begin{enumerate}[label=\alph*)]
+    		\item ¿Cuál es la diferencia entre un alcano y un alquino?
+    		\item  Nombra y formula (en forma semidesarrollada) los cinco primeros alquenos en \textit{todas} las formas \textit{distintas} en que sea posible que contengan dobles enlaces.
+    		\item ¿Por qué el grupo característico de las cetonas no puede ir asociado a los carbonos en los extremos de una cadena lineal?
+    	\end{enumerate} 
+    \qed
+    
+    
+    \item \textbf{(1 PUNTO)}
+    
+     A la vista del proceso que hemos analizado para la formación de sales ternarias a partir la disociación de ácidos oxoácidos, ¿qué relación existe entre un ácido carboxílico y un éster? 
+    \qed
+    
+    
+    \item \textbf{(3 PUNTOS)} 
+    
+    Considera los elementos desconocidos $^{8}\alpha$, $^{18}\beta$, $^{34}\delta$ y $^{38}\epsilon.$ 
+    	\begin{enumerate}[label=\alph*)]
+    		\item Escribe las configuraciones electrónicas de los cuatro elementos. 
+    		\item Justifica el tipo de enlace y la fórmula del compuesto que forman los elementos $\delta$ y $\epsilon$.
+    		\item Justifica la existencia de la molécula $\alpha_2$ e indica el tipo de enlace que se produce.
+    		\item Indica el tipo de enlace que formarán los elementos $\beta$ y $\alpha$.
+    	\end{enumerate}
+    \qed
+    	
+    
+    \newpage
+    
+    \item \textbf{(3 PUNTOS)} 
+    
+    El modelo de Bohr para el hidrógeno permite explicar la existencia de un espectro atómico discreto debido a un mecanismo de transición entre órbitas. En efecto, el único electrón del hidrógeno es capaz de pasar de una órbita más externa a una más interna emitiendo luz; o pasar de una órbita más interna a una más externa absorbiendo luz.
+    
+    La energía de un electrón en una órbita descrita por el número cuántico $n$ puede escribirse como
+    	$$E_n=-\frac{13.6}{n^2},$$
+    medida en $eV$, una unidad de energía que equivale aproximadamente a $1.6\cdot 10^{-19}\;J$.
+    		
+    	\begin{enumerate}[label=\alph*)]
+    		\item La cantidad de energía luminosa emitida o absorbida en la transición de un electrón desde un nivel $n_1$ a un nivel $n_2$ es $$\Delta E=|E_{n_1}-E_{n_2}|.$$
+    		
+    	 Calcula las cuatro energías, en $eV$, que puede emitir un electrón cuando \textit{cae} al nivel fundamental $n=1$ procedente de las órbitas correspondientes a $n=2$, $n=3$, $n=4$ y $n=5$.
+    		\item Planck propuso que la energía luminosa emitida o absorbida en una transición correspondía a la emisión o absorción de una partícula elemental llamada fotón que podía caracterizarse por una frecuencia $f$, medida en $s^{-1}$, según la expresión 
+    		$$\Delta E=hf,$$
+    		donde $h\simeq 6.63\cdot 10^{-34}\;J\cdot s$ es la llamada constante de Planck. 
+    		Calcula la frecuencia asociada a los fotones correspondientes a las transiciones del apartado a).
+    		\item Años antes Rydberg, de forma completamente experimental, había llegado a la conclusión de que la frecuencia de un fotón emitido como resultado de la transición de un electrón desde el nivel $n_i$ a un nivel inferior $n_f$ podía escribirse como 
+    		$$f=\beta\left(\frac{1}{n_f^2}-\frac{1}{n_i^2}\right),$$
+    		donde $\beta$ es una cierta constante. Calcula el valor de $\beta$ y sus unidades a partir de la información de los apartados a) y b).
+    	\end{enumerate}
+		\qed    	
+
+\end{enumerate}
+
+\end{document}
+

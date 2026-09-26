@@ -1,0 +1,412 @@
+\documentclass[a4paper,addpoints,14pt]{exam}
+%\documentclass[answers,addpoints,14pt]{exam}
+\unframedsolutions
+
+\usepackage{array,amsmath,fancybox,amsfonts,graphicx,amsthm,amssymb,wasysym}
+\usepackage{latexsym,slashed,anysize,subfigure,calc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage{fancyhdr,float,hyperref}
+%\usepackage{lettrine}
+
+%\usepackage{enumitem}
+
+
+
+%para los entornos de soluciones
+\usepackage{mdframed,color}
+	%uso: 	entorno (begin,end): {mdframed}[backgroundcolor=brown!10] 
+
+
+
+%entorno para química: texto y math mode
+%\newcommand*\chem[1]{\textup{#1}}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+%tamaños fuentes extra: 8,9,14,17,20
+	\usepackage{extsizes}
+
+%display style in long fractions
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+%tabla generada
+\usepackage[table,xcdraw]{xcolor}
+
+%lewis y química
+\usepackage{chemformula,elements}
+%chemformula, provides \ch{} with the !(<below>)(<formula>) syntax and \chlewis;
+%elements, provides \elconf and \writeelconf.
+%ex:
+%\ch{
+%  !(\elconf{Li})( "\chlewis{180.}{Li}" ) +
+%  !(\elconf{F})( "\chlewis{0.90:180:270:}{F}" )
+%   ->
+%  !(\writeelconf{2})( Li+ ) +
+%  !(\writeelconf{2,2+6})( "\chlewis{0:90:180:270:}{F}" {}- )
+%}
+
+%multicol
+\usepackage{multicol}
+  
+
+%símbolo bonito para qed
+\usepackage{amsthm}
+	%\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\halmos}{\vspace*{-6mm}
+	
+					\begin{flushright}
+						\rule{1mm}{2.5mm} 
+					\end{flushright}
+					\vspace*{-4mm}
+						
+					  }
+\renewcommand{\qed}{\halmos}
+
+ 
+%página blanco
+\usepackage{afterpage}
+%uso \afterpage{\blankpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{0}%
+    \newpage}
+
+
+
+
+
+ %caja bonita
+  \usepackage[many]{tcolorbox}
+\definecolor{titlebg}{RGB}{80,100,72}
+\newtcolorbox{learn}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=\bfseries
+    ]
+    at (frame.north west)  
+    {DATOS};
+  }
+}
+
+
+\newtcolorbox{formulacion}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=
+    ]
+    at (frame.north west)  
+    {\hspace*{3ex}};
+  }
+}
+
+\newtcolorbox{problemas}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=
+    ]
+    at (frame.north west)  
+    {AVISO};
+  }
+}
+	
+\usepackage{anysize}
+	%\marginsize{left}{right}{top}{bottom}
+    \marginsize{1cm}{.8cm}{1cm}{1cm}
+    
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{sidecap}
+\usepackage{mwe,float,afterpage}
+
+%redefiniciones
+\pointpoints{punto}{puntos}
+\bonuspointpoints{punto}{puntos}
+\hqword{Pregunta} %substitutes text for \Question"
+%\vpgword{Pág.}%substitutestext for \Page"
+\hpword{Máx.}%substitutes text for \Points"
+\hsword{Nota}%substitutes text for \Score"
+\htword{Total}%substitutes text for \Total:"
+
+\chqword{Pregunta}
+\chpword{Máx.}
+\chsword{Nota}
+\chtword{Total}
+\chbpword{Puntos \textit{bonus}}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+
+
+%fuentes
+	%\usepackage[T1]{fontenc}
+	%\usepackage{fourier}
+
+	\usepackage[T1]{fontenc}
+	\usepackage{librebaskerville}
+
+
+\usepackage{graphicx,graphics}
+\usepackage{color}
+	%	\colorgrids %grids con color
+	%	\definecolor{GridColor}{gray}{0.8}
+		%grid
+%			\setlength{\gridsize}{5mm}
+%   			 \setlength{\gridlinewidth}{0.1pt}
+
+%fracciones en texto más elaboradas
+	\usepackage{xfrac}
+
+%mejora en la exposición de guarismos
+	\usepackage{numprint}
+ 
+%caption
+\usepackage[font=small,labelfont=bf,
+labelsep=endash]{caption}
+	
+%soluciones sombreadas	
+\shadedsolutions
+
+
+\checkboxchar{$\Box$}
+\checkedchar{$\blacksquare$}
+
+\usepackage{everypage,draftwatermark} %Marca de agua
+\SetWatermarkText{\hspace*{-4cm} \parbox{\textwidth}{\centering  B1\\dist.}}
+\SetWatermarkScale{2}
+\SetWatermarkLightness{0.9}
+%
+%\usepackage{background}
+%\backgroundsetup{
+%scale=1.5,
+%angle=180,
+%opacity=.05,
+%color=black,
+%contents={
+%\includegraphics[scale=1]{unicorn.jpg}}}
+
+
+%\pagestyle{headandfoot}
+%\runningheadrule
+%\firstpageheader{Física para Biólogos}{Boletín 1a}{1 de octubre de 2011}
+%\runningheader{Física para Biólogos}
+%              {Boletín 1a, Página \thepage\ de \numpages}
+%            {1 de octubre de 2011}
+%\firstpagefooter{}{}{}
+%\runningfooter{}{}{}
+
+
+%espacios extra
+%\extrawidth{1in}
+%%\extrafootheight{.75in}
+%\extraheadheight{1in}
+
+%cabecera
+\header{\includegraphics[scale=.22]{a.png}}       
+      {}
+       {$f_2$\textbf{B1-{\small Distancia}}\\\textbf{febrero}2023}       
+%pie de página
+
+   %enumera en todas menos en la primera
+   %\runningfootrule
+
+   %enumera en todas
+   %\footrule
+   %\footer{}{Página \thepage\ de \numpages}{}
+%   \footer{}
+%	{Página \thepage\ de \numpages}
+%	{\iflastpage{{\footnotesize \textit{Fin del examen}}}{{\footnotesize \textit{Da la vuelta a la hoja}\ldots}}}
+
+
+		
+\begin{document}
+%portada
+%formato de preguntas
+\qformat{\textbf{Pregunta \thequestion}\quad (\thepoints)\hfill} 
+\pagenumbering{gobble}
+
+\fbox{\parbox{0.945\linewidth}{\textbf{Nombre y apellidos}:\vspace*{20mm}}}
+%\vspace{1ex}
+
+%\textbf{\hspace*{5mm} Sólo una de las respuestas es correcta.\newline \hspace*{11mm} Las preguntas erróneamente contestadas restarán 0.25 puntos.}
+\vspace*{\fill}
+
+\begin{learn}
+{$\triangleright\; M(\chem{O})\simeq16\;g\,mol^{-1}$\newline
+$\triangleright\; M(\chem{N})\simeq14\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{H})\simeq1\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{S})\simeq32\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{Cu})\simeq64\;g\,mol^{-1},$\newline
+$\triangleright\; R\simeq 0.082\;atm\,L\,mol^{-1}\,K^{-1}$}
+\end{learn}	
+%		\vspace{0ex}
+		
+
+%\begin{question}[1] ¿Cuál de las siguientes afirmaciones es \textbf{\small{VERDADERA}}?
+%	\begin{checkboxes} 
+%			\choice El enlace covalente sólo se da entre metales.			
+%			\choice Todos los compuestos covalentes se encuentran en estado sólido a temperatura ambiente.	
+%			\CorrectChoice Los compuestos covalentes pueden formar redes cristalinas con puntos de ebullición muy altos.
+%			\choice Los sólidos covalentes conducen la electricidad disueltos.	
+%	\end{checkboxes}
+%\end{question}
+%\qed
+%%
+\newpage
+\pagenumbering{gobble}
+
+\begin{problemas}{Recuerda que un examen es una \textit{comunicación}: debes invocar las leyes en que te basas para resolver los ejercicios así como \textit{indicar brevemente los pasos y razonamientos} que sigues para obtener los resultados.}
+\end{problemas}
+\vspace{1ex}
+
+
+\begin{questions}
+
+\question[2] En un matraz de $1.0\;L$ se introducen $0.02\;mol$ de oxígeno molecular y $0.03\;mol$ de nitrógeno molecular. Si la temperatura es de $20^\circ C$ y asumimos que ambos gases se comportan idealmente, calcula \textit{razonadamente}:
+	\begin{itemize}
+		\item[a)] La presión total de la mezcla.
+		
+		\begin{mdframed}[backgroundcolor=brown!10]  
+		La presión total puede hallarse calculando el número total de moles de la mezcla e imponiendo que cumplan la ecuación de estado
+		\[P_TV=n_TRT\rightarrow P_T=\frac{(0.02+0.03)\cdot 0.082\cdot 293}{1}\simeq 1.2\;atm.\]
+		\end{mdframed}
+		
+		\item[b)] La fracción molar y la presión parcial de cada gas.
+		\begin{mdframed}[backgroundcolor=brown!10]  
+		Las fracciones molares serán
+		\begin{eqnarray*}
+				\chi_{\chem{O_2}}&=&\frac{0.02}{0.02+0.03}\simeq 0.4,\\
+				\chi_{\chem{N_2}}&=&\frac{0.03}{0.02+0.03}\simeq 0.6.
+		\end{eqnarray*}
+		y que conduce, en virtud de la ley de Dalton, a las presiones parciales
+		\[P_{\chem{O_2}}\simeq 0.5\;atm;\hspace{1cm}P_{\chem{O_2}}\simeq 0.7\;atm.\] 
+		\end{mdframed}
+	\end{itemize}
+\qed
+
+\newpage
+\pagenumbering{gobble}
+
+
+\question[2] Estima la molaridad de:
+	\begin{itemize}
+		\item[a)]Una disolución de ácido nítrico etiqueda como al $16\%$ en peso y densidad $1.09\;g\,cm^{-3}$.
+		\begin{mdframed}[backgroundcolor=brown!10]  
+		Supongamos $1\;L$ de disolución: su masa es de $1090\;g$ y de ella, $174.4\;g$ ($2.8\;mol$) corresponden a ácido nítrico puro. Por tanto $$M\simeq \frac{2.8}{1}=2.8\;mol\,L^{-1}.$$
+		
+		\end{mdframed}
+		\item[b)] La disolución resultante al mezclar $0.5\;L$ de una disolución $2\;M$ de ácido sulfúrico con  $20\;cm^3$ de $\chem{H_2SO_4}$ concentrado al $96\%$ en peso y densidad $1.84\;g\,cm^{-3}$.
+		\begin{mdframed}[backgroundcolor=brown!10]  
+		Como es la misma sustancia podemos asumir volúmenes aditivos. La disolución resultante tendrá un volumen de $0.52\;L$. De la primera se añaden $0.5\cdot 2\simeq 1\;mol$ de ácido. 
+		La masa de disolución procedente de la segunda será $1.84\cdot 20\;g$, que contendrá $0.96\cdot 1.84\cdot 20\;g$ de ácido puro, equivalentes a $\sfrac{0.96\cdot 1.84\cdot  20}{98}\simeq 0.36\;mol$. 
+		
+		Con todo la disolución resultante tendrá una molaridad
+		\[M\simeq \frac{0.36+1}{0.52}\simeq 2.6\;mol\,L^{-1}.\]
+		\end{mdframed}
+	\end{itemize}
+\qed
+
+\newpage
+\pagenumbering{gobble}
+
+\question[2]   En condiciones normales de presión y temperatura se hacen reaccionar $60\;g$ de un mineral de cobre de $90\%$ de pureza con $100\;mL$ de una solución $1\,M$ de ácido nítrico. Sabiendo que el rendimiento para la formación de $\chem{NO_2}(g)$ es del $90\%$ y que se forma, además, nitrato de cobre{\small (II)} y agua:
+    	\begin{itemize}
+    		\item[a)] Ajusta la reacción e identifica el reactivo limitante.
+    		\begin{mdframed}[backgroundcolor=brown!10]  
+    		La reacción ajustada es
+    		\[\chem{Cu+4HNO_3}\longrightarrow\chem{2NO_2+Cu(NO_3)_2+2H_2O}.\]
+    		Se requieren, por ello, cuatro veces más moles de ácido nítrico que de cobre. 
+    		Calculemos los moles que hay disponibles de cada especie: de cobre tenemos $60\cdot 0.9\simeq 54\;g$ ($0.84\;mol$) y de ácido nítrico, $0.1\cdot 1\simeq 0.1\;mol$. 
+    		
+    		Naturalmente no están en proporción estequiométrica y va a sobrar cobre. El ácido nítrico es el reactivo limitante.
+    		\end{mdframed}
+    		\item[b)] Suponiendo que se comporta idealmente, calcula  el volumen de dióxido de nitrógeno que se obtiene.
+    	\begin{mdframed}[backgroundcolor=brown!10]  
+    	Según la estequiometría de la reacción partir de los $0.1\;mol$ de ácido nítrico se formarán $0.05\;mol$ de dióxido de nitrógeno. Si el rendimiento es del $90\%$ habrán de formarse $0.05\cdot 0.9\simeq 0.045\;mol$, que ocuparán un volumen 
+    	\[V=\frac{nRT}{P}=\frac{0.045\cdot 0.082\cdot 273}{1}\simeq 1\;L.\]
+    	\end{mdframed}
+    	\end{itemize}
+  	\qed
+
+\newpage
+\pagenumbering{gobble}
+
+
+\question[2] La descomposición térmica del clorato de potasio se produce según la reacción $\chem{KClO_3(s)}\rightarrow \chem{KCl(s)}+\chem{O_2(g)}.$
+	\begin{itemize}
+		\item[a)] Calcule la entalpía estándar de reacción para la descomposición de un mol de clorato.
+		%-22 kJ/mol de clorato. (ajuste 1-> 1 , 3/2)
+		\begin{mdframed}[backgroundcolor=brown!10]  
+		La reacción ajustada es 
+		\[\chem{KClO_3(s)}\rightarrow \chem{KCl(s)}+\frac{3}{2}\chem{O_2(g)},\]
+		de manera que la entalpía de reacción para la descomposición de un mol de clorato es 
+		\[\Delta_rH^0(\chem{KClO_3})=\Delta_fH^0(\chem{KCl})-\Delta_fH^0(\chem{KClO_3})\simeq -436-(-414)\simeq -22\;kJ.\]
+		\end{mdframed}
+		\item[b)] Determine la cantidad de calor, medida a presión constante, que intercambia la reacción con el medio al obtenerse $30\;L$ de oxígeno molecular, medidos en condiciones estándar de presión y temperatura. \textit{¿Se ceden o se absorben?}
+		\begin{mdframed}[backgroundcolor=brown!10]  
+		La cantidad de calor a presión constante es la entalpía de reacción. Los $30\;L$ de volumen equivalen a $$n=\frac{PV}{RT}=\frac{1\cdot 30}{0.082\cdot 273}\simeq 1.34\;mol,$$
+		de manera que según la estequiometría han debido descomponerse $1.34\cdot \sfrac{2}{3}\simeq 0.89\;mol$ de clorato. 
+		
+		Como por cada mol se desprenden $22\;kJ$, al descomponerse esta cantidad se ceden $0.89\cdot 22\simeq 19.7\;kJ$ al entorno.
+		\end{mdframed}
+		%se ceden 19.7 kJ al entorno.
+	\end{itemize}
+\vspace{1ex}
+	
+	{
+	\textbf{Datos:} $\Delta_fH^0(\chem{KClO_3(s)})\simeq -414\;kJ\,mol^{-1},\hspace{2ex}\Delta_fH^0(\chem{KCl(s)})\simeq -436\;kJ\,mol^{-1}.$
+	}
+\qed
+%%
+%%%\afterpage{\blankpage}
+%%\newpage
+%%\vspace*{-7ex}
+%%
+%%\begin{center}
+%%       \fbox{\footnotesize HOJA DE RESPUESTAS A LOS PROBLEMAS}
+%%\end{center}
+
+\end{questions}	
+
+
+\end{document}
+
+
+
+
+
+

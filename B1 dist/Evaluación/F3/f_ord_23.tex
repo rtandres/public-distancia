@@ -1,0 +1,344 @@
+\documentclass[a4paper,addpoints,12pt]{exam}
+%\documentclass[answers,addpoints,14pt]{exam}
+\unframedsolutions
+
+\usepackage{array,amsmath,fancybox,amsfonts,graphicx,amsthm,amssymb,wasysym}
+\usepackage{latexsym,slashed,anysize,subfigure,calc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage{fancyhdr,float,hyperref}
+%\usepackage{lettrine}
+
+%\usepackage{enumitem}
+
+%entorno para química: texto y math mode
+%\newcommand*\chem[1]{\textup{#1}}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+%tamaños fuentes extra: 8,9,14,17,20
+	\usepackage{extsizes}
+
+%display style in long fractions
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+%tabla generada
+\usepackage[table,xcdraw]{xcolor}
+
+%lewis y química
+\usepackage{chemformula,elements}
+%chemformula, provides \ch{} with the !(<below>)(<formula>) syntax and \chlewis;
+%elements, provides \elconf and \writeelconf.
+%ex:
+%\ch{
+%  !(\elconf{Li})( "\chlewis{180.}{Li}" ) +
+%  !(\elconf{F})( "\chlewis{0.90:180:270:}{F}" )
+%   ->
+%  !(\writeelconf{2})( Li+ ) +
+%  !(\writeelconf{2,2+6})( "\chlewis{0:90:180:270:}{F}" {}- )
+%}
+
+%multicol
+\usepackage{multicol}
+  
+
+%símbolo bonito para qed
+\usepackage{amsthm}
+	%\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\halmos}{\vspace*{-6mm}
+	
+					\begin{flushright}
+						\rule{1mm}{2.5mm} 
+					\end{flushright}
+					\vspace*{-4mm}
+						
+					  }
+\renewcommand{\qed}{\halmos}
+
+ 
+%página blanco
+\usepackage{afterpage}
+%uso \afterpage{\blankpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{0}%
+    \newpage}
+
+
+
+
+
+ %caja bonita
+  \usepackage[many]{tcolorbox}
+\definecolor{titlebg}{RGB}{80,100,72}
+\newtcolorbox{learn}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=\bfseries
+    ]
+    at (frame.north west)  
+    {DATOS};
+  }
+}
+
+
+\newtcolorbox{formulacion}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=
+    ]
+    at (frame.north west)  
+    {\hspace*{3ex}};
+  }
+}
+
+\newtcolorbox{problemas}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=
+    ]
+    at (frame.north west)  
+    {AVISO};
+  }
+}
+	
+\usepackage{anysize}
+	%\marginsize{left}{right}{top}{bottom}
+    \marginsize{1cm}{.8cm}{1cm}{1cm}
+    
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{sidecap}
+\usepackage{mwe,float,afterpage}
+
+%redefiniciones
+\pointpoints{punto}{puntos}
+\bonuspointpoints{punto}{puntos}
+\hqword{Pregunta} %substitutes text for \Question"
+%\vpgword{Pág.}%substitutestext for \Page"
+\hpword{Máx.}%substitutes text for \Points"
+\hsword{Nota}%substitutes text for \Score"
+\htword{Total}%substitutes text for \Total:"
+
+\chqword{Pregunta}
+\chpword{Máx.}
+\chsword{Nota}
+\chtword{Total}
+\chbpword{Puntos \textit{bonus}}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+
+
+%fuentes
+	%\usepackage[T1]{fontenc}
+	%\usepackage{fourier}
+
+	\usepackage[T1]{fontenc}
+	\usepackage{librebaskerville}
+
+
+\usepackage{amssymb,amsmath}
+\usepackage{graphicx,graphics}
+\usepackage{color}
+	%	\colorgrids %grids con color
+	%	\definecolor{GridColor}{gray}{0.8}
+		%grid
+%			\setlength{\gridsize}{5mm}
+%   			 \setlength{\gridlinewidth}{0.1pt}
+
+%fracciones en texto más elaboradas
+	\usepackage{xfrac}
+
+%mejora en la exposición de guarismos
+	\usepackage{numprint}
+ 
+%caption
+\usepackage[font=small,labelfont=bf,
+labelsep=endash]{caption}
+	
+%soluciones sombreadas	
+\shadedsolutions
+
+
+\checkboxchar{$\Box$}
+\checkedchar{$\blacksquare$}
+
+\usepackage{everypage,draftwatermark} %Marca de agua
+\SetWatermarkText{\hspace*{-4cm} \parbox{\textwidth}{\centering  B1\\dist.}}
+\SetWatermarkScale{2}
+\SetWatermarkLightness{0.9}
+%
+%\usepackage{background}
+%\backgroundsetup{
+%scale=1.5,
+%angle=180,
+%opacity=.05,
+%color=black,
+%contents={
+%\includegraphics[scale=1]{unicorn.jpg}}}
+
+
+
+%espacios extra
+%\extrawidth{1in}
+%%\extrafootheight{.75in}
+%\extraheadheight{1in}
+
+%cabecera
+\header{\includegraphics[scale=.22]{a.png}}       
+      {}
+       {$f_{ord}$\textbf{B1-{\small Dist.}}\;{\small II-III}\\27\textbf{marzo}2023 }       
+%pie de página
+
+   %enumera en todas menos en la primera
+   %\runningfootrule
+
+   %enumera en todas
+   %\footrule
+   %\footer{}{Página \thepage\ de \numpages}{}
+%   \footer{}
+%	{Página \thepage\ de \numpages}
+%	{\iflastpage{{\footnotesize \textit{Fin del examen}}}{{\footnotesize \textit{Da la vuelta a la hoja}\ldots}}}
+
+
+		
+\begin{document}
+%portada
+%formato de preguntas
+\qformat{\textbf{Pregunta \thequestion}\quad (\thepoints)\hfill} 
+\pagenumbering{gobble}
+
+\fbox{\parbox{0.945\linewidth}{\textbf{Nombre y apellidos}:\vspace*{20mm}}}
+%\vspace{1ex}
+
+%\textbf{\hspace*{5mm} Sólo una de las respuestas es correcta.\newline \hspace*{11mm} Las preguntas erróneamente contestadas restarán 0.25 puntos.}
+\vspace*{\fill}
+
+\begin{learn}
+{$\triangleright\; M(\chem{O})\simeq16\;g\,mol^{-1}$\newline
+$\triangleright\; M(\chem{C})\simeq12\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{N})\simeq14\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{H})\simeq1\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{Na})\simeq 23\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{Cl})\simeq 36\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{S})\simeq32\;g\,mol^{-1},$\newline
+$\triangleright\; M(\chem{Mn})\simeq55\;g\,mol^{-1},$\newline
+%$\triangleright\; M(\chem{Cu})\simeq64\;g\,mol^{-1},$\newline
+$\triangleright\; R\simeq 0.082\;atm\,L\,mol^{-1}\,K^{-1}$
+}
+\end{learn}	
+%		\vspace{0ex}
+		
+
+%\begin{question}[1] ¿Cuál de las siguientes afirmaciones es \textbf{\small{VERDADERA}}?
+%	\begin{checkboxes} 
+%			\choice El enlace covalente sólo se da entre metales.			
+%			\choice Todos los compuestos covalentes se encuentran en estado sólido a temperatura ambiente.	
+%			\CorrectChoice Los compuestos covalentes pueden formar redes cristalinas con puntos de ebullición muy altos.
+%			\choice Los sólidos covalentes conducen la electricidad disueltos.	
+%	\end{checkboxes}
+%\end{question}
+%\qed
+%%
+\newpage
+\pagenumbering{gobble}
+
+\begin{problemas}{Recuerda que un examen es una \textit{comunicación}: debes invocar las leyes en que te basas para resolver los ejercicios así como \textit{indicar brevemente los pasos y razonamientos} que sigues para obtener los resultados.}
+\end{problemas}
+\vspace{1ex}
+
+
+\begin{questions}
+
+\question[2] En un matraz de $5.0\;L$ se introducen $300\;g$ de oxígeno molecular y $150\;g$ de nitrógeno molecular. Si la temperatura es de $30^\circ C$ y asumimos que ambos gases se comportan idealmente, responde \textit{razonadamente} a las siguientes cuestiones:
+	\begin{parts}
+		\part[1] Calcula la presión total de la mezcla.
+		\part[1] Comprueba que se cumple la \textit{ley de Dalton}.
+	\end{parts}
+\qed
+
+
+\question[2] 
+	\begin{parts}
+		\part[1] ¿Cuántos gramos de ácido nítrico son necesarios para preparar $0.750\;L$ de disolución acuosa $1.4\;M$?
+		\part[1] Se disuelven $8\;g$ de hidróxido de sodio y se completa con agua hasta los $180\;mL$. Estima la molaridad de la disolución.
+	\end{parts}
+\qed
+
+
+\question[2]   A $100^\circ C$ y $3\;atm$  se hacen reaccionar $9\;g$ de dióxido de manganeso sólido con $60\;mL$ de una disolución $3\;M$ de ácido clorhídrico , obteniéndose $4.8\;g$ de dicloruro de manganeso sólido además de cloro molecular gaseoso y agua líquida.
+    	\begin{parts}
+    		\part[1] Ajusta la reacción e identifica el reactivo limitante.
+    		\part[1] Determina el rendimiento de la reacción.
+    	\end{parts}
+  	\qed
+
+\question[2] Las entalpías de formación del metanol líquido, el dióxido de carbono gaseoso y el agua líquida a presión de una atmósfera son, respectivamente, $-239\;kJ\,mol^{-1}$; $-393.5\;kJ\,mol^{-1}$ y $-285,6\;kJ\,mol^{-1}$.
+	\begin{parts}
+		\part[1] Ajusta la ecuación de combustión de $1\;mol$ de metanol y calcula la entalpía estándar molar de reacción.
+		\part[1] Determina el calor involucrado en la combustión de $1\;kg$ de metanol. ¿Es un calor \textit{absorbido} del entorno o \textit{cedido} al entorno?
+	\end{parts}
+\vspace{1ex}
+	
+\qed
+%%
+%%%\afterpage{\blankpage}
+%%\newpage
+%%\vspace*{-7ex}
+%%
+%%\begin{center}
+%%       \fbox{\footnotesize HOJA DE RESPUESTAS A LOS PROBLEMAS}
+%%\end{center}
+
+\question[2] Desde la azotea de un edificio de $100\;m$ se pega una patada a un balón de forma que en el instante del golpeo el ángulo que forma la velocidad con la horizontal es de $30^\circ$ y el valor del módulo de la velocidad es $v_0=20\;ms^{-1}$.
+	\begin{itemize}
+		\item[a)] Describe el sistema de referencia que vas a usar y determina las ecuaciones cinemáticas vectoriales del movimiento de la pelota.
+		\item[b)] Calcula a qué distancia del pie del edificio caerá y el vector velocidad cuando han pasado dos segundos desde el golpeo.
+	\end{itemize}
+	\qed
+
+\end{questions}	
+
+
+\end{document}
+
+
+
+
+
+

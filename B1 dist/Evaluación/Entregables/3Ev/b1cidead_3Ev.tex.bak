@@ -1,0 +1,186 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage{array,amsmath,fancybox,amsfonts,graphicx,amsthm,amssymb,wasysym,latexsym,slashed,anysize,subfigure,calc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,float,hyperref}
+\usepackage{lettrine}
+
+\usepackage{enumitem}
+
+
+%fractiones grandes en inline text: inventa un comando \ddfrac
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+%lewis y química
+\usepackage{chemformula,elements}
+%chemformula, provides \ch{} with the !(<below>)(<formula>) syntax and \chlewis;
+%elements, provides \elconf and \writeelconf.
+%ex:
+%\ch{
+%  !(\elconf{Li})( "\chlewis{180.}{Li}" ) +
+%  !(\elconf{F})( "\chlewis{0.90:180:270:}{F}" )
+%   ->
+%  !(\writeelconf{2})( Li+ ) +
+%  !(\writeelconf{2,2+6})( "\chlewis{0:90:180:270:}{F}" {}- )
+%}
+
+
+%entorno para química: texto y math mode
+%\newcommand*\chem[1]{\textup{#1}}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+%column
+\usepackage{multicol}
+%uso: \begin{multicols}{3}
+
+%enumitem: configurar listas
+\usepackage{enumitem}
+
+%para los entornos de soluciones
+\usepackage{mdframed,xcolor,color}
+	%uso: 	entorno (begin,end): {mdframed}[backgroundcolor=brown!10] 
+
+%subrayado y highlight. Tiene que estar detrás de usepackage[color]
+\usepackage{soul}
+	%\textst{normal} 
+	\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}} %en cyan!
+		%\hl{highlighted text} %uso
+
+
+%tamaños fuentes extra: 8,9,14,17,20
+	\usepackage{extsizes}
+	
+ 	%fuente librebaskerville
+ 	\usepackage[T1]{fontenc}
+	\usepackage{librebaskerville}
+	
+	%fracciones $$ en texto más elaboradas
+	 \usepackage{xfrac}
+	 
+	%permitir que una ecuación larga esté separada por un salto de página
+	\allowdisplaybreaks[4]
+		
+	%gráficos varios 
+	\usepackage{graphics}
+	
+	%fancy tables
+	\usepackage{booktabs}
+	\usepackage[small,centerlast,up]{caption}
+
+	
+	%mejora en la exposición de guarismos
+	\usepackage{numprint}
+	
+\usepackage{everypage,draftwatermark} %Marca de agua
+\SetWatermarkText{\vspace*{2cm}
+
+\hspace*{2cm}\parbox{2\textwidth}{\centering DIST.\\B1-FyQ}}
+\SetWatermarkScale{1.5}
+\SetWatermarkLightness{0.9}
+
+\DeclareMathOperator{\lin}{lin}
+\DeclareMathOperator{\id}{\textbf{id}}
+\DeclareMathOperator{\modulo}{mod}
+
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\halmos}{
+\vspace*{-4ex}
+
+\begin{flushright}
+\rule{1mm}{2.5mm} \end{flushright}
+\vspace*{-3.5ex}
+
+}
+\renewcommand{\qed}{\halmos}
+
+
+%versores: %uso: \uveci\ne\hat{\imath}_{\uvec{i}}+\uvec{j}+\uvec{k}$
+\usepackage{bm}
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\DeclareRobustCommand{\uvec}[1]{{%
+  \ifcsname uvec#1\endcsname
+     \csname uvec#1\endcsname
+   \else
+    \bm{\hat{\mathbf{#1}}}%
+   \fi
+}}
+
+
+%algún nuevo operador
+\DeclareMathOperator{\cotan}{cotan}
+
+
+%para textbf en entorno enumerate
+\renewcommand{\labelenumi}{%
+ \textbf{\theenumi}.
+}
+
+%a4
+\marginsize{.5cm}{1cm}{1cm}{1cm}%requiere el paquete anysize,izq,dcha,arriba,abajo
+
+%a5
+%\marginsize{1cm}{1cm}{1cm}{.5cm}%requiere el paquete anysize,izq,dcha,arriba,abajo
+
+\newtheorem{teo}{{\sc \textbf{Teorema}}}
+\newtheorem{defi}{{\sc \textbf{Definición}}}
+\newtheorem{coro}{{\sc \textbf{Corolario}}}
+
+
+%opening
+\title{\textbf{	}}
+\date{}
+\pagestyle{fancy}
+\fancyhead[LO,RE]{{\small DOSSIER DE PROBLEMAS\hspace{1ex} \textbf{3Ev}}}
+\fancyhead[RO,LE]{{\small B1-DIST\hspace{2ex} FÍSICA y QUÍMICA}}
+%\fancyhead[CO,CE]{Ricardo Torres\\http://tinyurl.com/iesCMGfyq}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%gas ideal y mezclas
+%disoluciones
+%estequiometría: ajuste, reactivo limitante, reactivos en disolución e impuros
+
+
+\begin{enumerate}
+  \setlength\itemsep{1.5em}
+    
+    
+    \item Se lanza, en vertical y hacia arriba, una pelota con velocidad $v_1=20\;ms^{-1}$. Desde la misma vertical y un segundo más tarde se hace lo propio con otra bola, esta vez con una velocidad inicial de $v_2=1.5v_1$. Despreciando rozamientos con el aire, determina:
+    	\begin{itemize}
+    		\item[a)] Las ecuaciones cinemáticas de las dos pelotas.
+    		\item[b)] ¿Colisionan en algún punto? Si es así, determina cuándo y a qué altura.
+    	\end{itemize}
+    \qed 
+    
+    \item Formando un ángulo $\alpha=30^\circ$ con la horizontal se lanza un proyectil desde un cañón antiaéreo capaz de lanzar objetos con una velocidad de salida igual a $400\;ms^{-1}$. Sabiendo que la boca del cañón está a metro y medio del suelo, y despreciando cualquier rozamiento, determina: 
+    	\begin{itemize}
+    		\item[a)] Las ecuaciones cinemáticas vectoriales para el proyectil en cualquier punto de su vuelo.
+    		\item[b)] ¿Cuál es la velocidad \textit{mínima} del proyectil en su vuelo?
+    		\item[c)] ¿Cuánto tarda en colisionar con el suelo? ¿Cuál ha sido el alcance?
+    		\item[d)] ¿Cuál es la altura máxima respecto al suelo que alcanza en su trayectoria?
+    	\end{itemize}
+    \qed
+    
+    \item Desde una altura $h$ se lanza un objeto con una velocidad $v_0$ formando un ángulo $\beta$ con la horizontal. Suponiendo que la intensidad gravitatoria es $g$, estima:
+    	\begin{itemize}
+    		\item[a)] El vector posición del objeto en cada instante de su vuelo.
+    		\item[b)] La ecuación de la trayectoria del objeto\footnote{Se denomina trayectoria del objeto a la función $y(x)$ que expresa la componente $y$ del objeto en función de la componente $x$.}.
+    		\item[b)] El ángulo, $\beta_{max}$, que maximiza el alcance. 
+		\end{itemize}    	 
+    \qed
+    
+    \item Los vectores de posición de dos barcos en el mar Mediterráneo vienen dados, en el {\small SI}, por las expresiones
+    \[\vec{r}_1(t)=(t,t+e^{-t}),\hspace{2cm}\vec{r}_2(t)=\left(\sin t,1+t^{-1}+\cos t\right).\]
+    	\begin{itemize}
+    		\item[a)] Obtén $\vec{v}$ y $\vec{a}$  para cada embarcación.
+    		\item[b)] Calcula la distancia que los separa en función del tiempo $t$.
+    	\end{itemize}
+    
+\end{enumerate}
+
+\end{document}
+

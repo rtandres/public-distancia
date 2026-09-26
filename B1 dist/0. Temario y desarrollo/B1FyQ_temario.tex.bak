@@ -1,0 +1,525 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage{array,amsmath,fancybox,amsfonts,graphicx,amsthm,amssymb,wasysym}
+\usepackage{latexsym,slashed,anysize,subfigure,calc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,float,hyperref}
+\usepackage{lettrine,multicol,pdflscape,enumerate}
+
+\usepackage{soul}
+\usepackage{enumitem}
+\setlist[itemize]{itemsep=6pt,topsep=5.5pt}
+%\setlength{\parskip}{0.25cm plus 5mm minus 4mm}
+
+%entorno para química: texto y math mode
+%\newcommand*\chem[1]{\textup{#1}}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+\usepackage[dvipsnames]{xcolor}
+%para los entornos de soluciones
+\usepackage{mdframed}
+	%uso: 	entorno (begin,end): {mdframed}[backgroundcolor=brown!10] 
+
+
+%cajas
+\usepackage[skins]{tcolorbox}
+
+\newtcolorbox{tagbox}[1][]{
+  colback=blue!10!white,
+  arc=0pt,
+  auto outer arc,
+%  sharp corners,
+  boxrule=0pt,
+  enhanced jigsaw,
+  nobeforeafter,
+  width=0.58\textwidth,
+  boxsep=0pt,
+ % halign=,
+  valign=center,
+  box align=center,
+  colupper={blue!20!black}, % a dark blue
+  fontupper={\bfseries},
+  top=\fboxsep,
+  bottom=\fboxsep,
+  left=\fboxsep,
+  right=\fboxsep,
+  baseline=\fboxsep,
+  #1
+}
+
+\newtcolorbox{tagboxtwo}[1][]{
+  colback=blue!10!white,
+  arc=0pt,
+  auto outer arc,
+%  sharp corners,
+  boxrule=0pt,
+  enhanced jigsaw,
+  nobeforeafter,
+  width=.9\textwidth,
+  boxsep=0pt,
+ % halign=,
+  valign=center,
+  box align=center,
+  colupper={blue!20!black}, % a dark blue
+  fontupper={},
+  top=\fboxsep,
+  bottom=\fboxsep,
+  left=\fboxsep,
+  right=\fboxsep,
+  baseline=\fboxsep,
+  #1
+}
+
+\newtcolorbox{tagboxtres}[1][]{
+  colback=blue!10!white,
+  arc=0pt,
+  auto outer arc,
+%  sharp corners,
+  boxrule=0pt,
+  enhanced jigsaw,
+  nobeforeafter,
+  width=.5\textwidth,
+  boxsep=0pt,
+ % halign=,
+  valign=center,
+  box align=center,
+  colupper={blue!20!black}, % a dark blue
+  fontupper={\centering},
+  top=\fboxsep,
+  bottom=\fboxsep,
+  left=\fboxsep,
+  right=\fboxsep,
+  baseline=\fboxsep,
+  #1
+}
+
+\newcommand{\sotagbox}[2][]{%
+  \begin{tagbox}[#1]%
+    #2
+  \end{tagbox}%
+}
+
+\newcommand{\sotagboxtwo}[2][]{%
+  \begin{tagboxtwo}[#1]%
+    #2
+  \end{tagboxtwo}%
+}
+
+\newcommand{\sotagboxtres}[2][]{%
+  \begin{tagboxtres}[#1]%
+    #2
+  \end{tagboxtres}%
+}
+
+%uso: \sotagbox[drop shadow]{Modelo nuclear de bola de billar}
+
+
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=gray,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={B1 FyQ. Temario},
+%    pdfpagemode=FullScreen,
+    }
+    
+    
+%formatos tachado
+\usepackage{ulem}
+%    \ sout {text}% tachado
+%     \ uwave {text}% línea de onda
+%     \ xout {text}% tachado diagonal
+%     \ uuline {text}% Doble subrayado
+
+
+%para los entornos de soluciones
+\usepackage{mdframed,xcolor}
+	%uso: 	entorno (begin,end): {mdframed}[backgroundcolor=brown!10] 
+
+
+%tamaños fuentes extra: 8,9,14,17,20
+	\usepackage{extsizes}
+	
+ 	%fuente librebaskerville
+ 	\usepackage[T1]{fontenc}
+	\usepackage{librebaskerville}
+	
+
+	
+	%fracciones $$ en texto más elaboradas
+	 \usepackage{xfrac}
+	 
+	%permitir que una ecuación larga esté separada por un salto de página
+	\allowdisplaybreaks[4]
+		
+	%gráficos varios 
+	\usepackage{graphics}
+	
+	%fancy tables
+	\usepackage{booktabs}
+	\usepackage[small,centerlast,up]{caption}
+
+	
+	%mejora en la exposición de guarismos
+	\usepackage{numprint}
+	
+\usepackage{everypage,draftwatermark} %Marca de agua
+\SetWatermarkText{\parbox{\textwidth}{\center \hspace*{1cm}B1dist \\\hspace*{-3cm}F\&Q}}
+\SetWatermarkScale{1.8}
+\SetWatermarkLightness{0.94}
+
+\DeclareMathOperator{\lin}{lin}
+\DeclareMathOperator{\id}{\textbf{id}}
+\DeclareMathOperator{\modulo}{mod}
+
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\halmos}{\begin{flushright}
+\rule{1mm}{2.5mm} \end{flushright}}
+\renewcommand{\qed}{\halmos}
+
+
+%versores: %uso: \uveci\ne\hat{\imath}_{\uvec{i}}+\uvec{j}+\uvec{k}$
+\usepackage{bm}
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\DeclareRobustCommand{\uvec}[1]{{%
+  \ifcsname uvec#1\endcsname
+     \csname uvec#1\endcsname
+   \else
+    \bm{\hat{\mathbf{#1}}}%
+   \fi
+}}
+
+
+%algún nuevo operador
+\DeclareMathOperator{\cotan}{cotan}
+
+
+%para textbf en entorno enumerate
+\renewcommand{\labelenumi}{%
+ \textbf{\theenumi}.
+}
+
+%anysize
+\marginsize{.5cm}{.7cm}{.7cm}{.5cm}%requiere el paquete anysize,izq,dcha,arriba,abajo
+
+
+\newtheorem{teo}{{\sc \textbf{Teorema}}}
+\newtheorem{defi}{{\sc \textbf{Definición}}}
+\newtheorem{coro}{{\sc \textbf{Corolario}}}
+
+
+%opening
+\title{\textbf{	}}
+\date{}
+%\pagestyle{fancy}
+%\fancyhead[LO,RE]{
+%					%Física, B2 
+%%\href{http://tinyurl.com/fisicayquimica}{\nolinkurl{tinyurl.com/fisicayquimica}} 
+%					}
+%\fancyhead[RO,LE]{
+%%Dept. Física y Química
+%					}
+%%\fancyhead[CO,CE]{Ricardo Torres\\http://tinyurl.com/iesCMGfyq}
+%
+
+
+
+
+\begin{document}
+%\maketitle
+\pagenumbering{gobble}
+
+\vspace*{-2cm}
+
+\begin{center}
+\Huge  FÍSICA Y QUÍMICA
+\vspace{.2cm}
+
+{\large
+Prof. Ricardo Torres Andrés
+}
+\vspace{-7mm}
+
+{\normalsize
+\href{mailto:ricardo.torresandres@educa.madrid.org}{ricardo.torresandres@educa.madrid.org}
+}
+\end{center}
+\vspace{.3cm}
+
+\begin{mdframed}[backgroundcolor=gray!20]  
+\center
+{\Large\bfseries Temario}
+%\\ \normalsize{y tentativa de temporización}
+\end{mdframed}
+
+\vspace{.2cm}
+
+\begin{multicols}{2}
+
+
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{---}
+\renewcommand{\labelitemiii}{}
+	\begin{enumerate}
+	%\setcounter{enumi}{-1}
+	
+%		\item {\bfseries\footnotesize INTRODUCCIÓN*}
+%			\begin{itemize}[leftmargin=2mm]
+% 				\item El conocimiento científico
+% 				{\footnotesize
+% 				\begin{itemize}[leftmargin=6mm]
+% 					\item Método. Contra el método
+% 					\item Modelización
+% 				\end{itemize}
+% 				}
+% 			\end{itemize}
+%
+% 			
+ 		\item {\bfseries \footnotesize MATERIA E INTERACCIÓN}
+ 			\begin{itemize}[leftmargin=2mm]
+				\item Estructura atómica
+ 					{\footnotesize
+ 					\begin{itemize}[leftmargin=6mm]
+ 						\item Estabilidad radiativa: modelo de \textit{Bohr}
+ 						{\footnotesize
+ 						\begin{itemize}[leftmargin=6mm]
+ 							\item Transiciones y espectros
+ 						\end{itemize}
+ 						}
+ 						\item El modelo de \textit{Schrödinger} para $\chem{^1H}$
+ 						{\footnotesize
+ 						\begin{itemize}[leftmargin=6mm]
+ 							\item Números cuánticos y estados
+ 							\item Principio de exclusión de \textit{Pauli}
+ 							\item Configuraciones polielectrónicas y {\scriptsize SP}
+ 						\end{itemize}
+ 						}
+ 						
+ 						\item Propiedades periódicas
+ 					 {
+ 							\begin{itemize}[leftmargin=6mm]
+ 								\item Atracción {\tiny VS} repulsión
+ 							\end{itemize}
+ 							}
+ 					
+ 						
+ 					\end{itemize}
+ 					}
+ 					
+ 				\item Microestructura de la materia
+ 					{\footnotesize
+ 					\begin{itemize}[leftmargin=6mm]
+ 						\item Estabilidad: regla del octeto 
+ 						\item Enlaces iónico, covalente y metálico
+ 						{
+ 							\begin{itemize}[leftmargin=6mm]
+ 								\item Estructura, cohesión y transporte		
+ 							\end{itemize}
+ 							}
+ 					\end{itemize}
+ 					}
+ 					
+ 				\item Partículas en interacción
+ 					{\footnotesize
+ 					\begin{itemize}[leftmargin=6mm]
+ 						%\item Escalas microscópica \textit{vs} macroscópica
+ 						\item Gases ideales
+ 						\item Disoluciones
+ 			
+ 				
+ 				    \item Formulación inorgánica
+ 					  {\footnotesize
+ 					   \begin{itemize}[leftmargin=6mm]
+ 						   \item Repaso: binarios y ternarios
+ 						  % \item Disociación de ácidos ternarios
+ 						   \item Oxisales y sales ácidas
+ 				      	\end{itemize}
+ 					  }
+ 				 						
+ 		        	\item Estequiometría 
+ 		        	 {\footnotesize
+ 					   \begin{itemize}[leftmargin=6mm]
+ 						   \item Reactivo limitante
+ 						   \item Riqueza y rendimiento
+ 						   \item Entalpía
+ 				      	\end{itemize}
+ 					  }
+ 		      	
+ 		      	\item Formulación orgánica{\footnotesize
+ 				    	\begin{itemize}[leftmargin=6mm]
+ 						  \item Hidrocarburos y radicales. Haluros
+ 						  \item Funciones oxigenadas y nitrogenadas
+ 						 % \item Compuestos polifuncionales
+ 					  \end{itemize}
+ 					    }
+ 					\end{itemize}
+ 					}
+ 			\end{itemize}
+ 
+ \columnbreak	
+ 		\item {\bfseries \footnotesize MECÁNICA} 
+ 			\begin{itemize}[leftmargin=2mm]
+ 				\item Formalismo 
+ 					{\footnotesize
+ 					\begin{itemize}[leftmargin=6mm]
+ 						\item Sistemas de referencia 
+% 						{\footnotesize\itshape
+% 						\begin{itemize}[leftmargin=6mm]
+% 							\item Relatividad e invariancia
+% 						\end{itemize}
+% 						}
+ 						\item Análisis del \textit{cambio}
+ 						{\footnotesize
+ 						\begin{itemize}[leftmargin=4mm]
+ 							\item Evolución temporal y cálculo vectorial
+ 							\item Descriptores finitos e instantáneos
+ 						\end{itemize}
+ 						}
+
+ 					\end{itemize}
+ 					}
+ 				\item Cinemática en la recta y el plano
+ 					{\footnotesize
+ 					\begin{itemize}[leftmargin=6mm]
+ 						\item Modelización en $\mathbb{R}^1$ y $\mathbb{S}^1$. Periocidad
+ 						\item Movimiento plano bajo gravedad 
+ 						{\footnotesize
+ 						\begin{itemize}[leftmargin=4mm]
+ 							\item Alcance y altura máxima
+ 							\item Trayectoria
+ 						\end{itemize}
+ 						}
+ 					\end{itemize}
+ 					}
+ 				\item (Termo)dinámica
+ 					{\footnotesize
+ 					\begin{itemize}[leftmargin=6mm]
+ 						\item Sistemas inerciales y leyes de \textit{Newton}
+ 						\item Sistemas en $\mathbb{R}^{1}$ y $\mathbb{S}^1$
+ 						{\footnotesize
+ 						\begin{itemize}[leftmargin=4mm]
+ 							\item Diagramas de cuerpo libre. Ligaduras
+ 							\item Rozamiento
+ 							\item Fuerza centrípeta
+ 							\item Fuerza elástica
+ 						\end{itemize}
+ 						}
+ 						
+ 					%	\item La segunda ley de la termodinámica
+% 						{\footnotesize\itshape
+% 						\begin{itemize}[leftmargin=6mm]
+% 							\item Irreversibilidad
+% 						\end{itemize}
+% 						}
+ 					\end{itemize}
+ 					}
+ 			
+ 			\item Cantidades conservadas
+ 					{\footnotesize
+ 					\begin{itemize}[leftmargin=6mm]						
+ 						\item ¿Qué es una ley de conservación?
+ 						\item Energía mecánica
+ 						{\footnotesize
+ 						\begin{itemize}[leftmargin=4mm]
+ 							\item Trabajo y potencia
+ 							\item Energía potencial y cinética
+ 							
+ 						\end{itemize}
+ 						}
+ 						\item Momento lineal
+ 					\end{itemize}
+ 					}
+ 				\end{itemize}
+	 \end{enumerate}
+\end{multicols}
+
+%
+%\newpage
+%\vspace*{-2cm}
+%
+%	\section*{El espíritu de la asignatura}
+%	
+%	La física y la química son estructuras que van m\'as all\'a del c\'alculo de numeritos: buscan comprender procesos complejos que nos rodean a través de la modelización y un cuerpo de conocimientos basados en primeros principios.
+%		
+%\vspace{1.5ex}
+%
+%Mi objetivo principal para contigo: 
+%	\begin{enumerate}[label=\roman*)]
+%		\item \hl{\textit{m\'as all\'a de n\'umeros y f\'ormulas, expresi\'on de ideas y razonamientos}},
+%		\item \hl{\textit{trabajo, trabajo y trabajo}.} 
+%	\end{enumerate}
+%\vspace{1ex}
+%	
+%	El planteamiento de dudas y la participación son parte esencial.
+%
+%	\section*{Temporización}
+%	Tenemos por delante unas $130$ sesiones  brutas para desarrollar el curso. En este conjunto se distribuirán las sesiones de \textbf{teoría}, \textbf{talleres} de trabajo práctico, sesiones de \textbf{trabajo cooperativo}, exámenes y correcciones.
+%	\vspace{1ex}
+%	
+%	Un temporización, \textit{tentativa}, por trimestres podría ser la siguiente:
+%	\vspace{2ex}
+%	
+%	{\small
+%\begin{minipage}{.3\textwidth}
+%	\sotagboxtwo[drop shadow]{
+%	\center{
+%	\textbf{1Ev} \vspace{1ex}
+%	
+%	{\footnotesize
+%	1 + 2. Microestructura  
+%	  }}
+%	 }
+%\end{minipage}\hfill
+%\begin{minipage}{.3\textwidth}
+%	\sotagboxtwo[drop shadow]{
+%	\center{
+%	\textbf{2Ev}\vspace{1ex}
+%	
+%	{\footnotesize
+%	 2 + 3. Formalismo}}
+%	 }
+%\end{minipage}\hfill
+%\begin{minipage}{.3\textwidth}
+%	\sotagboxtwo[drop shadow]{
+%	\center{
+%	\textbf{3Ev}\vspace{1ex}
+%	
+%	{\footnotesize
+%	 El resto de 3}}
+%	 }
+%\end{minipage}
+%}
+%
+%
+%	\section*{Sobre criterios y exámenes}
+%
+%La evaluación del curso se basará fuertemente en el examen, sin óbice de que en cada evaluación aparezcan otros instrumentos que permitan tener en cuenta la adquisición de competencias en distintos escenarios.
+%\vspace{2mm}
+%
+%Como normal general \hl{los ex\'amenes tendr\'an un peso del $90\%$} en la calificación de cada trimestre y tendremos un parcial y un final en cada evaluación.
+%
+%\vspace{2mm}
+%
+%Evaluaré con \textit{especial atención} la \hl{expresi\'on de razonamientos e ideas} a la hora de enfrentar la resolución de problema.
+%
+%	\section*{Manuales y libros}
+%
+%
+%	La asignatura se estructurará a partir de la toma de apuntes de clase, \textit{dossieres de trabajo} y material de apoyo. No será necesaria la compra de \hl{ning\'un manual ni libro de texto}, aunque podría ser útil pedir prestado (nunca comprar) un libro cualquiera de {\footnotesize FÍSICA Y QUÍMICA} del nivel de primero de bachillerato.
+%
+%
+%%
+%%
+%%\begin{center}
+%%	\section*{Sobre criterios y exámenes (\textit{extracto})}
+%%\end{center}
+%%
+%%
+
+
+\end{document}
+

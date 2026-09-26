@@ -1,0 +1,491 @@
+\documentclass[a4paper,addpoints,14pt]{exam}
+%\documentclass[answers,addpoints,14pt]{exam}
+\unframedsolutions
+
+
+%entorno para química: texto y math mode
+%\newcommand*\chem[1]{\textup{#1}}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+%tamaños fuentes extra: 8,9,14,17,20
+	\usepackage{extsizes}
+
+%display style in long fractions
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+
+%tabla generada
+\usepackage[table,xcdraw]{xcolor}
+
+
+%lewis y química
+\usepackage{chemformula,elements}
+%chemformula, provides \ch{} with the !(<below>)(<formula>) syntax and \chlewis;
+%elements, provides \elconf and \writeelconf.
+%ex:
+%\ch{
+%  !(\elconf{Li})( "\chlewis{180.}{Li}" ) +
+%  !(\elconf{F})( "\chlewis{0.90:180:270:}{F}" )
+%   ->
+%  !(\writeelconf{2})( Li+ ) +
+%  !(\writeelconf{2,2+6})( "\chlewis{0:90:180:270:}{F}" {}- )
+%}
+
+
+%multicol
+\usepackage{multicol}
+  
+  %símbolo bonito para qed
+\usepackage{amsthm}
+	%\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\halmos}{\vspace*{-4mm}
+	
+					\begin{flushright}
+						\rule{1mm}{2.5mm} 
+					\end{flushright}\vspace*{-4mm}
+						
+					  }
+\renewcommand{\qed}{\halmos}
+
+ 
+%página blanco
+\usepackage{afterpage}
+%uso \afterpage{\blankpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{0}%
+    \newpage}
+
+
+
+
+
+ %caja bonita
+  \usepackage[many]{tcolorbox}
+\definecolor{titlebg}{RGB}{80,100,72}
+\newtcolorbox{learn}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=\bfseries
+    ]
+    at (frame.north west)  
+    {TEST};
+  }
+}
+
+
+\newtcolorbox{formulacion}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=
+    ]
+    at (frame.north west)  
+    {\hspace*{3ex}};
+  }
+}
+
+\newtcolorbox{problemas}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=
+    ]
+    at (frame.north west)  
+    {PROBLEMAS};
+  }
+}
+	
+\usepackage{anysize}
+	%\marginsize{left}{right}{top}{bottom}
+    \marginsize{1cm}{.8cm}{1cm}{1cm}
+    
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{sidecap}
+\usepackage{mwe,float,afterpage}
+
+%redefiniciones
+\pointpoints{punto}{puntos}
+\bonuspointpoints{punto}{puntos}
+\hqword{Pregunta} %substitutes text for \Question"
+%\vpgword{Pág.}%substitutestext for \Page"
+\hpword{Máx.}%substitutes text for \Points"
+\hsword{Nota}%substitutes text for \Score"
+\htword{Total}%substitutes text for \Total:"
+
+\chqword{Pregunta}
+\chpword{Máx.}
+\chsword{Nota}
+\chtword{Total}
+\chbpword{Puntos \textit{bonus}}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+
+
+%fuentes
+	%\usepackage[T1]{fontenc}
+	%\usepackage{fourier}
+
+	\usepackage[T1]{fontenc}
+	\usepackage{librebaskerville}
+
+
+\usepackage{amssymb,amsmath}
+\usepackage{graphicx,graphics}
+\usepackage{color}
+	%	\colorgrids %grids con color
+	%	\definecolor{GridColor}{gray}{0.8}
+		%grid
+%			\setlength{\gridsize}{5mm}
+%   			 \setlength{\gridlinewidth}{0.1pt}
+
+%fracciones en texto más elaboradas
+	\usepackage{xfrac}
+
+%mejora en la exposición de guarismos
+	\usepackage{numprint}
+ 
+%caption
+\usepackage[font=small,labelfont=bf,
+labelsep=endash]{caption}
+	
+%soluciones sombreadas	
+\shadedsolutions
+
+
+\checkboxchar{$\Box$}
+\checkedchar{$\blacksquare$}
+
+\usepackage{everypage,draftwatermark} %Marca de agua
+\SetWatermarkText{\hspace*{-8cm} \parbox{\textwidth}{\centering  B1\\DIST}}
+\SetWatermarkScale{1.2}
+\SetWatermarkLightness{0.9}
+%
+%\usepackage{background}
+%\backgroundsetup{
+%scale=1.5,
+%angle=180,
+%opacity=.05,
+%color=black,
+%contents={
+%\includegraphics[scale=1]{unicorn.jpg}}}
+
+
+\pagestyle{headandfoot}
+%\runningheadrule
+%\firstpageheader{Física para Biólogos}{Boletín 1a}{1 de octubre de 2011}
+%\runningheader{Física para Biólogos}
+%              {Boletín 1a, Página \thepage\ de \numpages}
+%            {1 de octubre de 2011}
+%\firstpagefooter{}{}{}
+%\runningfooter{}{}{}
+
+
+%espacios extra
+%\extrawidth{1in}
+%%\extrafootheight{.75in}
+%\extraheadheight{1in}
+
+%cabecera
+\header{\includegraphics[scale=.22]{a.png}}       
+      {}
+       {$f_1$\textbf{B1-{\small DIST.}}\\\textbf{nov}2025}       
+%pie de página
+
+   %enumera en todas menos en la primera
+   %\runningfootrule
+
+   %enumera en todas
+   %\footrule
+   %\footer{}{Página \thepage\ de \numpages}{}
+   \footer{}
+	{Página \thepage\ de \numpages}
+	{\iflastpage{{\footnotesize \textit{Fin del examen}}}{{\footnotesize \textit{Da la vuelta a la hoja}\ldots}}}
+
+
+		
+\begin{document}
+
+%portada
+
+
+%	\vspace{.5in}
+%		
+%	\makebox[\textwidth]{\textbf{Nombre y apellidos:}\enspace\hrulefill}
+%	
+%	\vspace{0.5in}
+%
+%%
+%	\begin{center}
+%		%\pointtable[h][questions]
+%		\gradetable[h][questions]
+%	\end{center}
+%	
+%	
+%	\begin{center}
+%		%\pointtable[h][questions]
+%		%\combinedgradetable[h][questions]
+%	\end{center}
+%	
+%		
+%		
+%	\vspace{0.3in}
+
+%formato de preguntas
+\qformat{\textbf{Pregunta \thequestion}\quad (\thepoints)\hfill} 
+
+
+%\newpage
+\vspace*{-2ex}
+
+\fbox{\parbox{0.945\linewidth}{\textbf{Nombre y apellidos}:\vspace*{2mm}}}
+\vspace{3ex}
+
+%\textbf{\hspace*{5mm} Sólo una de las respuestas es correcta.\newline \hspace*{11mm} Las preguntas erróneamente contestadas restarán 0.25 puntos.}
+
+\begin{learn}
+{Cada respuesta incorrecta tendrá una penalización de $-0.25$ puntos. \newline\textbf{¡No contestes a voleo!}}
+\end{learn}	
+		\vspace{0ex}
+		
+	\begin{questions}
+	
+%			
+%	\begin{question}[1] ¿Cuál de las siguientes afirmaciones es \textbf{\small{INCORRECTA}}?
+%		\begin{checkboxes} 
+%			\choice $Z=18$ es un gas noble.
+%			\CorrectChoice $Z=5$ tiene un electrón en su última capa.
+%			\choice $Z=19$ es un metal.
+%			\choice La configuración $1s^2\,2s^2p^6\,3s^2p^5$ pertenece a un elemento no metálico con siete electrones en su capa de valencia.
+%		\end{checkboxes}
+%		\end{question}
+%		\qed
+		
+	
+	\begin{question}[1] ¿Cuál de las siguientes afirmaciones es \textbf{\small{CORRECTA}}?
+		\begin{checkboxes}
+			\CorrectChoice Los sólidos iónicos tienen una estructura microscópica ordenada y forman cristales a temperatura ambiente.
+			\choice Las propiedades conductoras de los compuestos covalentes se explican por la presencia de una nube de electrones prácticamente libres.
+			\choice  El sulfato de amonio no conduce la eletricidad disuelto.
+			\choice Los metales tienen puntos de fusión y ebullición muy bajos respecto a la temperatura ambiente, por eso prácticamente todos son sólidos.
+		\end{checkboxes}
+	\end{question}
+	\qed
+	\vspace{-2ex}
+	
+		
+%	\begin{question}[1] Considera el compuesto al que da lugar el enlace entre los elementos $Z=20$, y $Z=9$. ¿Cuál de las siguientes afirmaciones es \textbf{\small{CORRECTA}}?
+%		\begin{checkboxes} 
+%		\choice Conduce la electricidad en estado sólido.
+%		\choice Tiene un punto de fusión bajo.
+%		\choice El enlace es covalente y forma una verdadera molécula.
+%		\CorrectChoice Las intensas interacciones interatómicas provocarán que sea sólido a temperatura ambiente.
+%		\end{checkboxes}
+%		\end{question}
+%		\qed
+%	\vspace{-2ex}
+
+	
+%\begin{question}[1] Sean los elementos $_{17}X$, $_{20}Y$. ¿Qué afirmación es \textbf{\small{INCORRECTA}}?
+%		\begin{checkboxes} 
+%		\choice	Formarán un compuesto de fórmula \chem{YX_2}.
+%		\choice \chem{Y} es un metal del grupo 2.
+%		\choice \chem{YX_2} conduce la electricidad en disolución acuosa.
+%		\CorrectChoice Formarán un compuesto de fórmula \chem{Y_2X}.
+%		\end{checkboxes}
+%		\qed
+%		\end{question}
+%		
+	
+	
+%	\begin{question}[1] ¿Cuál de las siguientes afirmaciones es \textbf{\small{CORRECTA}} respecto al comportamiento del oxígeno, $_{\,8}\chem{O}$?
+%		\begin{checkboxes}
+%			\choice La existencia del oxígeno molecular puede justificarse por la compartición de un par de \textit{Lewis}.
+%			\choice La molécula de $\chem{O_2}$ puede justificarse con un enlace iónico.
+%			\choice Debido a que el oxígeno molecular es un gas, su existencia se justifica a través de la compartición masiva de electrones.
+%			\CorrectChoice La existencia de la molécula de $\chem{O_2}$ puede justificarse a través de un enlace covalente con dos pares de \textit{Lewis} compartidos.
+%		\end{checkboxes}
+%	\end{question}
+%	\qed
+		
+%
+%	\begin{question}[1] ¿Cuál de las siguientes afirmaciones es \textbf{\small{VERDADERA}}?
+%		\begin{checkboxes} 
+%			\choice El enlace iónico une siempre un átomo no metálico con otro elemento no metálico.
+%			\CorrectChoice El sulfato de amonio conduce la electricidad disuelto en agua.
+%			\choice En una reacción química la suma del número de moles de reactivos es igual a la suma del número de moles de productos.
+%			\choice Los compuestos moleculares son buenos conductores de la electricidad en estado líquido.
+%		\end{checkboxes}
+%		\qed
+%		\end{question}
+%	
+%	
+%\begin{question}[1] ¿Qué afirmación es {\small \textbf{INCORRECTA}} para el \textit{ácido sulfúrico}?
+%	\begin{checkboxes} 
+%		\choice Da lugar a sales ácidas al disociarse parcialmente.
+%		\CorrectChoice Su molécula está formada por ocho átomos.
+%		\choice Es uno de los tres ácidos ternarios que forma el azufre.
+%		\choice El azufre actúa en él con estado de oxidación $6+$.
+%	\end{checkboxes}
+%\qed
+%\end{question}
+
+	
+	\begin{question}[1] ¿Cuál de las siguientes afirmaciones es \textbf{\small{CORRECTA}}?
+		\begin{checkboxes}
+			\choice Que el nitrógeno molecular sea un gas a temperatura ambiente se justifica a través de la 									compartición masiva de sus electrones.			
+			\choice La existencia del flúor molecular puede justificarse por la existencia de un enlace doble formado 						por dos pares de \textit{Lewis}.		
+			\choice La existencia de la molécula de ozono puede justificarse debido a un enlace iónico en el que 						cada átomo comparte un electrón.
+			\CorrectChoice La existencia de la molécula de cloro molecular puede justificarse a través de un enlace simple formado por un par \textit{Lewis}.
+		\end{checkboxes}	
+	\end{question}
+	\qed
+\vspace{-1ex}
+		
+
+\question[1] ¿Cuál de las siguientes afirmaciones es {\small \textbf{INCORRECTA}}?
+		\begin{checkboxes} 
+		\choice El cloruro de amonio es sólido a temperatura ambiente.
+		\choice El comportamiento químico de un elemento viene determinado por los electrones de su última capa.
+		\choice El fluoruro de calcio es soluble en agua.
+		\CorrectChoice El tetracloruro de carbono es un buen conductor eléctrico. 
+		\end{checkboxes}
+\qed
+\vspace*{3ex}
+
+
+\begin{formulacion}
+\textbf{FORMULACIÓN Y NOMENCLATURA}
+\end{formulacion}
+
+
+\begin{question}[4]
+	Nombra cada una de estas sustancias \textbf{de dos formas}, siempre que no coincidan. 
+	\begin{itemize}
+		\item $\chem{HMnO_4}$
+		\vspace{50pt}
+		
+%		\item $\chem{HClO_2}$
+%		\vspace{60pt}
+				
+		\item $\chem{Fe_2(SO_4)_3}$
+		\vspace{50pt}
+		
+		%\item $\chem{HIO}$\vspace{50pt}
+		
+		\item $\chem{CaCO_3}$\vspace{50pt}
+		
+		\item $\chem{H_3PO_4}$\vspace{50pt}
+		
+%		\item $\chem{HCl(aq)}$
+%		\vspace{60pt}
+	
+	\end{itemize}
+\end{question}
+
+
+
+\begin{question}[4] Formula las siguientes sustancias. 
+
+		\begin{itemize}
+		\item 1,3,5-tribromobenceno\vspace{50pt}
+		
+		\item Butanamida\vspace{50pt}
+		
+		\item Propanodial\vspace{50pt}
+		
+		\item Etanoato de metilo\vspace{50pt}
+		
+		\item Butanodinitrilo\vspace{50pt}
+				
+		\item  Ácido pent-2-en-dioico\vspace{50pt}
+		
+		%\item  But-3-in-1,2-diol\vspace{50pt}
+		
+	%	\item  Ciclopentilciclohexano \vspace{70pt}
+		
+	\end{itemize}
+\end{question}
+
+
+	
+\begin{problemas}{Recuerda que un examen es una \textit{comunicación}: debes invocar las leyes en que te basas para resolver los ejercicios así como \textit{indicar brevemente los pasos y razonamientos} que sigues para obtener los resultados.}
+\end{problemas}
+\vspace{5ex}
+
+
+\question[4] 
+	\begin{parts}
+	  \setlength\itemsep{1ex}
+		\part[2] \textbf{Representa} la \textbf{estructura de niveles y subniveles} del átomo de hidrógeno para $n=1$, $n=2$, $n=3$ y $n=4$. 
+		\part[2] \textbf{Calcula} \textit{razonadamente} el \textbf{número máximo de electrones} que podría dar cabida cada uno de los niveles anteriores.
+	\end{parts}
+\qed
+
+
+\question[6] Considera los elementos desconocidos $^{16}\alpha$, $^{54}\beta$, $^{35}\delta$ y $^{56}\epsilon.$ 
+    	\begin{parts}
+    	\setlength\itemsep{1ex}
+    		\part[1] Escribe las \textbf{configuraciones electrónicas} de los cuatro elementos. 
+    		\part[2] \textbf{Justifica} el \textbf{tipo de enlace y la fórmula del compuesto} que forman los elementos $\delta$ y $\epsilon$.
+    		\part[1] \textbf{Describe} \textit{razonadamente} las \textbf{propiedades} (estructura, solubilidad, conducción eléctrica y estado físico más probable a temperatura ambiente) que presentará el compuesto del apartado b).
+    		\part[1] \textbf{Justifica la existencia} de la molécula $\delta_2$ e indica el \textbf{tipo de enlace} que se produce.
+    		\part[1] \textbf{Justifica} el \textit{tipo de enlace} que formarán $\beta$ y $\epsilon$.
+    	\end{parts}
+		\qed
+
+
+
+%\afterpage{\blankpage}
+\newpage
+\vspace*{-7ex}
+
+\begin{center}
+       \fbox{\footnotesize HOJA DE RESPUESTAS A LOS PROBLEMAS}
+\end{center}
+
+\end{questions}	
+
+
+\end{document}
+
+
+
+
+
+

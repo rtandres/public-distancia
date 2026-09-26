@@ -1,0 +1,16 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}¿Qué es y qué no es {\small {FÍSICA}} de {\small {B2}}?}{}{section.1}%
+\contentsline {section}{\numberline {2}Información relevante}{}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Profesor}{}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Tutorías y seguimiento telemático}{}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Normativa}{}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Sobre la bibliografía}{}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Método de trabajo}{}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Espíritu de la asignatura}{}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Temporización}{}{section.4}%
+\contentsline {section}{\numberline {5}Evaluación y calificación}{}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Exámenes}{}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Ejercicios entregables}{}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Criterios de calificación específicos}{}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Cálculo de calificaciones}{}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Nota final}{}{subsubsection.5.4.1}%

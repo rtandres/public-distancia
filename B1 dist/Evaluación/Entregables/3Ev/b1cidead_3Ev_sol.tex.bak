@@ -1,0 +1,301 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage{array,amsmath,fancybox,amsfonts,graphicx,amsthm,amssymb,wasysym,latexsym,slashed,anysize,subfigure,calc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,float,hyperref}
+\usepackage{lettrine}
+
+\usepackage{enumitem}
+
+
+%fractiones grandes en inline text: inventa un comando \ddfrac
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+%lewis y química
+\usepackage{chemformula,elements}
+%chemformula, provides \ch{} with the !(<below>)(<formula>) syntax and \chlewis;
+%elements, provides \elconf and \writeelconf.
+%ex:
+%\ch{
+%  !(\elconf{Li})( "\chlewis{180.}{Li}" ) +
+%  !(\elconf{F})( "\chlewis{0.90:180:270:}{F}" )
+%   ->
+%  !(\writeelconf{2})( Li+ ) +
+%  !(\writeelconf{2,2+6})( "\chlewis{0:90:180:270:}{F}" {}- )
+%}
+
+
+%entorno para química: texto y math mode
+%\newcommand*\chem[1]{\textup{#1}}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+%column
+\usepackage{multicol}
+%uso: \begin{multicols}{3}
+
+%enumitem: configurar listas
+\usepackage{enumitem}
+
+%para los entornos de soluciones
+\usepackage{mdframed,xcolor,color}
+	%uso: 	entorno (begin,end): {mdframed}[backgroundcolor=brown!10] 
+
+%subrayado y highlight. Tiene que estar detrás de usepackage[color]
+\usepackage{soul}
+	%\textst{normal} 
+	\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}} %en cyan!
+		%\hl{highlighted text} %uso
+
+
+%tamaños fuentes extra: 8,9,14,17,20
+	\usepackage{extsizes}
+	
+ 	%fuente librebaskerville
+ 	\usepackage[T1]{fontenc}
+	\usepackage{librebaskerville}
+	
+	%fracciones $$ en texto más elaboradas
+	 \usepackage{xfrac}
+	 
+	%permitir que una ecuación larga esté separada por un salto de página
+	\allowdisplaybreaks[4]
+		
+	%gráficos varios 
+	\usepackage{graphics}
+	
+	%fancy tables
+	\usepackage{booktabs}
+	\usepackage[small,centerlast,up]{caption}
+
+	
+	%mejora en la exposición de guarismos
+	\usepackage{numprint}
+	
+\usepackage{everypage,draftwatermark} %Marca de agua
+\SetWatermarkText{\vspace*{2cm}
+
+\hspace*{2cm}\parbox{2\textwidth}{\centering DIST.\\B1-FyQ}}
+\SetWatermarkScale{1.5}
+\SetWatermarkLightness{0.9}
+
+\DeclareMathOperator{\lin}{lin}
+\DeclareMathOperator{\id}{\textbf{id}}
+\DeclareMathOperator{\modulo}{mod}
+
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\halmos}{
+\vspace*{-4ex}
+
+\begin{flushright}
+\rule{1mm}{2.5mm} \end{flushright}
+\vspace*{-3.5ex}
+
+}
+\renewcommand{\qed}{\halmos}
+
+
+%versores: %uso: \uveci\ne\hat{\imath}_{\uvec{i}}+\uvec{j}+\uvec{k}$
+\usepackage{bm}
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\DeclareRobustCommand{\uvec}[1]{{%
+  \ifcsname uvec#1\endcsname
+     \csname uvec#1\endcsname
+   \else
+    \bm{\hat{\mathbf{#1}}}%
+   \fi
+}}
+
+
+%algún nuevo operador
+\DeclareMathOperator{\cotan}{cotan}
+
+
+%para textbf en entorno enumerate
+\renewcommand{\labelenumi}{%
+ \textbf{\theenumi}.
+}
+
+%a4
+\marginsize{.5cm}{1cm}{1cm}{1cm}%requiere el paquete anysize,izq,dcha,arriba,abajo
+
+%a5
+%\marginsize{1cm}{1cm}{1cm}{.5cm}%requiere el paquete anysize,izq,dcha,arriba,abajo
+
+\newtheorem{teo}{{\sc \textbf{Teorema}}}
+\newtheorem{defi}{{\sc \textbf{Definición}}}
+\newtheorem{coro}{{\sc \textbf{Corolario}}}
+
+
+%opening
+\title{\textbf{	}}
+\date{}
+\pagestyle{fancy}
+\fancyhead[LO,RE]{{\small DOSSIER DE PROBLEMAS\hspace{1ex} \textbf{3Ev}}}
+\fancyhead[RO,LE]{{\small B1-DIST\hspace{2ex} FÍSICA y QUÍMICA}}
+%\fancyhead[CO,CE]{Ricardo Torres\\http://tinyurl.com/iesCMGfyq}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%gas ideal y mezclas
+%disoluciones
+%estequiometría: ajuste, reactivo limitante, reactivos en disolución e impuros
+
+
+\begin{enumerate}
+  \setlength\itemsep{1.5em}
+    
+    
+    \item Se lanza, en vertical y hacia arriba, una pelota con velocidad $v_1=20\;ms^{-1}$. Desde la misma vertical y un segundo más tarde se hace lo propio con otra bola, esta vez con una velocidad inicial de $v_2=1.5v_1$. Despreciando rozamientos con el aire, determina:
+    	\begin{itemize}
+    		\item[a)] Las ecuaciones cinemáticas de las dos pelotas.
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		El movimiento de ambas pelotas es una caída libre. Elegimos un sistema de referencia cuyo origen coincida con el punto de lanzamiento, con el eje $y$ coincidente con la dirección de movimiento de las pelotas (orientado positivamente \textit{hacia arriba}) y fijamos el origen de tiempos en el momento en que se lanza la primera bola. Si $(1)$ hace referencia a la primera pelota lanzada, entonces
+    		\begin{minipage}{.5\textwidth}
+    			\begin{align*}
+    				y_1(t)&=v_1t-\frac{1}{2}gt^2,\\
+    				v_1(t)&=v_1-gt,\\
+    				a_1(t)&=-g,
+    			\end{align*}
+    		\end{minipage}\hfill
+    		\begin{minipage}{.5\textwidth}
+    			\begin{align*}
+    				y_2(t)&=v_2(t-1)-\frac{1}{2}g(t-1)^2,\\
+    				v_2(t)&=v_2-g(t-1),\\
+    				a_2(t)&=-g,
+    			\end{align*}
+    		\end{minipage}
+    		\vspace{1ex}
+    		
+    		donde finalmente habría que imponer $v_2=1.5v_1=30\;ms^{-1}$.
+    		\end{mdframed}
+    		\item[b)] ¿Colisionan en algún punto? Si es así, determina cuándo y a qué altura.
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		Si lo hacen deberán estar en el mismo punto, en el mismo momento. Es decir, debe cumplirse para algún tiempo que
+    		\[y_1(t)=y_2(t)\longrightarrow v_1t-\frac{1}{2}gt^2=1.5v_1(t-1)-\frac{1}{2}g(t-1)^2.\]
+    		Al resolver la ecuación resulta un tiempo 
+    		\[t=\frac{3v_1+g}{v_1+2g}\simeq 2.3\;s,\]
+    		perfectamente válido y que es precisamente el tiempo de tardan las pelotas en colisionar. Para calcular la altura simplemente habrá que calcular la posición de alguna de las bolas ya que $y_1(t)=y_2(t)\simeq 19.7\;m$.    		
+    		\end{mdframed}
+    	\end{itemize}
+    \qed 
+    
+    \newpage
+    
+    \item Formando un ángulo $\alpha=30^\circ$ con la horizontal se lanza un proyectil desde un cañón antiaéreo capaz de lanzar objetos con una velocidad de salida igual a $400\;ms^{-1}$. Sabiendo que la boca del cañón está a metro y medio del suelo, y despreciando cualquier rozamiento, determina: 
+    	\begin{itemize}
+    		\item[a)] Las ecuaciones cinemáticas vectoriales para el proyectil en cualquier punto de su vuelo.
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		Consideremos un sistema de referencia sito en la boca del proyectil y con ejes perpendiculares correspondientes a direcciones paralela y perpendicular al suelo orientados como de costumbre.
+    		
+    			Llamemos $v_0$ a la velocidad con la que es capaz de animar el cañón al proyectil. Entonces las componentes $x$ e $y$ del movimiento serán
+    		$$x(t)=v_0\cos\alpha\,t,\hspace{1cm} y(t)=v_0\sin\alpha\,t-\frac{1}{2}gt^2,$$
+    		que permiten construir el vector posición $\vec{r}(t)=\big(x(t),\,y(t)\big)$ que tomará la forma
+    		\[\vec{r}(t)=\left(v_0\cos\alpha\,t,\,v_0\sin\alpha\,t-\frac{1}{2}gt^2\right).\]
+    		Con él la velocidad y la aceleración se calculan como derivadas:
+    		\begin{align*}
+    			\vec{v}(t)&=\vec{r}\,'(t)=\left(v_0\cos\alpha,\,v_0\sin\alpha-gt\right),\\
+    			\vec{a}(t)&=\vec{v}\,'(t)=(0,-g).
+    		\end{align*}
+    		\end{mdframed}
+    		\item[b)] ¿Cuál es la velocidad \textit{mínima} del proyectil en su vuelo?
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		A la vista de la función $\vec{v}(t)$ podemos observar que la primera componente es constante y la segunda cambia con el tiempo. Precisamente en el punto en el que la segunda componente sea mínima será mínima la velocidad. 
+    		
+    		Este momento es precisamente el que corresponde al punto de máxima altura, momento en el que la segunda componente de la velocidad se anula y corresponde, asimismo, a un mínimo de la velocidad $\vec{v}(t)$ en módulo.
+    		\end{mdframed}
+    		\newpage
+    		
+    		\item[c)] ¿Cuánto tarda en colisionar con el suelo? ¿Cuál ha sido el alcance?
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		Hecho en clase: basta con imponer la condición de colisión como aquella en que el proyectil llega al suelo. Según nuestro sistema de referencia esto se consigue resolviendo $y(t)=-h$, con $h$ la altura de la boca del cañón respecto al suelo.
+    		\end{mdframed}
+    		
+    		
+    		\item[d)] ¿Cuál es la altura máxima respecto al suelo que alcanza en su trayectoria?
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		Hecho en clase: basta con imponer que la velocidad vertical se anule y obtener el tiempo para el que la altura es máxima. Con él y con las ecuaciones cinemáticas es fácil responder al ejercicio.
+    		\end{mdframed}
+    	\end{itemize}
+    \qed
+    
+    \newpage
+    
+    \item Desde una altura $h$ se lanza un objeto con una velocidad $v_0$ formando un ángulo $\beta$ con la horizontal. Suponiendo que la intensidad gravitatoria es $g$, estima:
+    	\begin{itemize}
+    		\item[a)] El vector posición del objeto en cada instante de su vuelo.
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		Podemos reciclar el ejercicio anterior. Para incluir la altura $h$ a la que ha sido lanzado explícitamente consideraremos, no obstante, que el origen de coordenadas se halla situado en el suelo, sobre la vertical del punto en el que se lanza el proyectil.
+    		
+    		Escribiremos, entonces, el vector posición como
+    		\begin{align*}
+    		\vec{r}(t)&=\left(v_0\cos\beta\,t,h+\,v_0\sin\beta\,t-\frac{1}{2}gt^2\right).
+    		\end{align*}
+    		\end{mdframed}
+    		\item[b)] La ecuación de la trayectoria del objeto\footnote{Se denomina trayectoria del objeto a la función $y(x)$ que expresa la componente $y$ del objeto en función de la componente $x$.}.
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		La primera y la segunda componente del vector posición vienen dadas por
+    		\[x(t)=v_0\cos\beta\,t,\hspace{1cm}y(t)=h+v_0\sin\beta\,t-\frac{1}{2}gt^2,\]
+    		de modo que despejando el tiempo en la primera e introduciéndolo en la segunda obtenemos
+    		\[y=h+x\tan\beta-\frac{g}{2v_0^2\cos^2\beta}\,x^2,\]
+    		que corresponde a una trayectoria parabólica.
+    		\end{mdframed}
+    		
+    		\item[b)] El ángulo, $\beta_{max}$, que maximiza el alcance. 
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		Hay muchas formas de hacerlo. A la vista de la ecuación de la trayectoria podemos ver que si $y=0$, entonces $x=alcance\equiv \zeta$, de forma que se cumple
+    		\[0=h+\zeta\tan\beta-\frac{g}{2v_0^2\cos^2\beta}\,\zeta^2,\]
+    		que permite calcular $\zeta=\zeta(\beta)$, es decir el alcance en función del ángulo de lanzamiento. Maximizando esta función ya tendríamos el resultado pedido.
+    		
+    		Podemos derivar implícitamente la ecuación anterior e imponer que $d\zeta=0$ para $\beta=\beta_{\max}$ que es precisamente la condición de extremo. Si lo hacemos llegamos a que $\zeta_{\max}$ y $\beta_{\max}$ satisfacen las ecuaciones
+    		\begin{align*}
+    		0&=h+\zeta_{\max}\tan\beta_{\max}-\frac{g}{2v_0^2\cos^2\beta_{\max}}\,\zeta_{\max}^2,\\
+    		0&=\zeta_{\max}\tan\beta_{\max}-\frac{v_0^2}{g},
+    		\end{align*}
+    		que implican necesariamente
+    		\[\sin^2\beta_{\max}=\frac{1}{2}\frac{v_0^2}{v_0^2+gh},\]
+    		y, por tanto, un ángulo $\beta_{\max}$ que depende de la velocidad inicial, la intensidad gravitatoria y la altura $h$ del lanzamiento. 
+    		
+    		Como discutimos en clase, si $h=0$, entonces $\beta_{\max}=45^\circ$, pero el resto de situaciones no son tan claras.
+    		\end{mdframed}
+		\end{itemize}    	 
+    \qed
+    
+    \newpage
+    \item Los vectores de posición de dos barcos en el mar Mediterráneo vienen dados, en el {\small SI}, por las expresiones
+    \[\vec{r}_1(t)=(t,t+e^{-t}),\hspace{2cm}\vec{r}_2(t)=\left(\sin t,1+t^{-1}+\cos t\right).\]
+    	\begin{itemize}
+    		\item[a)] Obtén $\vec{v}$ y $\vec{a}$  para cada embarcación.
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    			Solo hay que derivar las ecuaciones de posición de ambos barcos
+    			\begin{minipage}{.5\textwidth}
+    				\begin{align*}
+    					\vec{v}_1(t)=\left(1,1-e^{-t}\right),\\
+    					\vec{a}_1(t)=\left(0,e^{-t}\right).
+    				\end{align*}
+    			\end{minipage}\hfill
+    			\begin{minipage}{.5\textwidth}
+    				\begin{align*}
+    					\vec{v}_2(t)=\left(\cos t,-t^{-2}-\sin t\right),\\
+    					\vec{a}_2(t)=\left(-\sin t,2t^{-3}-\cos t\right).
+    				\end{align*}
+    			\end{minipage}
+    		\end{mdframed}
+    		\item[b)] Calcula la distancia que los separa en función del tiempo $t$.
+    		\begin{mdframed}[backgroundcolor=yellow!20]  
+    		La distancia se puede calcular a partir de los vectores de posición como
+    		\[d=\|\vec{r}_2-\vec{r_1}\|,\]
+    		que es un cálculo fácil aunque algo farragoso por la forma funcional de las componentes.
+    		Puede escribirse
+    		\[d=\sqrt{\left(\sin t-t\right)^2+\left(1+t^{-1}+\cos t-t-e^{-t}\right)^2},\]
+    		y representa la distancia entre los barcos para cualquier $t>0$.
+    		\end{mdframed}
+    	\end{itemize}
+    
+\end{enumerate}
+
+\end{document}
+

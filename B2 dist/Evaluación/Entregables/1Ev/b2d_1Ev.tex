@@ -1,0 +1,217 @@
+\documentclass[a4paper,14pt]{exam}
+\usepackage{array,amsmath,fancybox,amsfonts,bm}
+\usepackage{graphicx,amssymb,wasysym,latexsym,slashed,anysize,subfigure,calc}
+
+
+
+%versores: %uso: \uveci\ne\hat{\imath}_{\uvec{i}}+\uvec{j}+\uvec{k}$
+	\usepackage{bm}
+	\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+	\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+	\DeclareRobustCommand{\uvec}[1]{{%
+ 	 \ifcsname uvec#1\endcsname
+  	   \csname uvec#1\endcsname
+  	 \else
+   		 \bm{\hat{\mathbf{#1}}}%
+   		\fi
+									}}
+
+
+
+%tamaños fuentes extra: 8,9,14,17,20
+	\usepackage{extsizes}
+	
+ %caja bonita
+  \usepackage[many]{tcolorbox}
+\definecolor{titlebg}{RGB}{80,100,72}
+\newtcolorbox{learn}{
+  breakable,
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=titlebg,
+  colback=titlebg!7,
+  overlay unbroken and first={
+    \node[
+      draw=titlebg,
+      fill=titlebg,
+      rotate=270,
+      anchor=north west,
+      text=white,
+      font=\bfseries
+    ]
+    at (frame.north west)  
+    {DATOS};
+  }
+}
+
+%imágenes fundidas texto
+\usepackage{wrapfig}
+
+\usepackage{mwe,float,afterpage}
+
+\usepackage{anysize,float}
+	%\marginsize{left}{right}{top}{bottom}
+    \marginsize{1.5cm}{1.5cm}{1cm}{.7cm}
+    
+    
+    
+    
+%entorno para química: texto y math mode
+%\newcommand*\chem[1]{\textup{#1}}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+%símbolo bonito para qed
+\usepackage{amsthm}
+	%\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\halmos}{\vspace*{-7mm}
+	
+					\begin{flushright}
+						\rule{1mm}{2.5mm} 
+					\end{flushright}\vspace*{-6mm}
+						
+					  }
+\renewcommand{\qed}{\halmos}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage{fancyhdr}
+\usepackage{lettrine}
+
+%subrayado y highlight. Tiene que estar detrás de usepackage[color]
+\usepackage{soul}
+	%\textst{normal} 
+	\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}} %en cyan!
+		%\hl{highlighted text} %uso
+
+
+%fuentes
+	\usepackage[T1]{fontenc}
+	\usepackage{mathpazo}
+
+	\usepackage{librebaskerville}
+
+%fancy tables
+	\usepackage{booktabs}
+	\usepackage[small,centerlast,up]{caption}
+
+	
+
+\usepackage{amssymb,amsmath}
+\newcommand{\angstrom}{\mbox{\normalfont\AA}}
+
+\usepackage{graphicx,graphics}
+\usepackage{color}
+	%	\colorgrids %grids con color
+	%	\definecolor{GridColor}{gray}{0.8}
+		%grid
+%			\setlength{\gridsize}{5mm}
+%   			 \setlength{\gridlinewidth}{0.1pt}
+
+%fracciones en texto más elaboradas
+	\usepackage{xfrac}
+
+%mejora en la exposición de guarismos
+	\usepackage{numprint}
+ 
+
+
+%para los entornos de soluciones
+\usepackage{mdframed,xcolor,color}
+	%uso: 	entorno (begin,end): {mdframed}[backgroundcolor=brown!10] 
+
+
+\usepackage{everypage,draftwatermark} %Marca de agua
+\SetWatermarkText{\parbox{2\textwidth}{\centering B2\\Dist}}
+\SetWatermarkScale{1.5}
+\SetWatermarkLightness{0.92}
+
+
+
+
+
+\pagestyle{headandfoot}
+%\runningheadrule
+%\firstpageheader{Física para Biólogos}{Boletín 1a}{1 de octubre de 2011}
+%\runningheader{Física para Biólogos}
+%              {Boletín 1a, Página \thepage\ de \numpages}
+%            {1 de octubre de 2011}
+%\firstpagefooter{}{}{}
+%\runningfooter{}{}{}
+
+
+%espacios extra
+%\extrawidth{1in}
+%%\extrafootheight{.75in}
+%\extraheadheight{1in}
+
+%cabecera
+\header{{\small DOSSIER DE PROBLEMAS}
+		}       
+      {%\\Noviembre de 2019
+       }
+       {B2-distancia}
+       
+%pie de página
+
+   %enumera en todas menos en la primera
+   %\runningfootrule
+
+   %enumera en todas
+   %\footrule
+   %\footer{}{Página \thepage\ de \numpages}{}
+%   \footer{}
+%	{Página \thepage\ de \numpages}
+%	{\small\bfseries\iflastpage{\textsc{Fin del examen}}{%Da la vuelta a la página\ldots
+%	}}
+
+       
+
+		
+\begin{document}
+	
+
+
+\begin{enumerate}
+	
+		%ondas banda ap
+		\item La perturbación asociada a una onda viene descrita por la expresión
+$$\psi(z,t)= 10^{-3}\cos\left(12t +3\pi z-\frac{3\pi}{4}\right),\; \text{\small (SI)}.$$
+	\begin{itemize}
+		\item[a)] Determina: \textit{el sentido y la dirección de propagación, $\lambda$ y $c$}.
+		\item[b)] Obtén la \textit{diferencia de fase}, en el mismo instante de tiempo, para dos puntos separados una distancia igual a $3\lambda$.
+	\end{itemize}
+	\qed
+		
+		%sonido banda ap.
+		\item 
+			\begin{itemize}
+				\item[a)] El sonido emitido por un altavoz es registrado con un nivel sonoro de $70\;dB$ a una 
+distancia de $2\;m$. Si el altavoz se aproxima como un foco puntual, estima la \textit{distancia} a la que el sonido deja de ser perceptible para un ser humano.
+				\item[b)] Una persona hablando produce un sonido con una intensidad unas quinientas veces mayor que 						cuando susurra. ¿Qué \textit{diferencia de nivel sonoro} hay entre ambos sonidos?
+				\vspace*{.2mm}					
+			\end{itemize}
+		\qed
+		
+		
+		%banda notable
+		\item 	
+			\begin{itemize}
+				\item[a)] Una lámpara de luz monocromática de frecuencia $f=5\cdot 10^{15}\,Hz$ emite con $20\;W$ de potencia.  Suponiendo que la radiación se propaga en el vacío, determina su \textit{longitud de onda} y el \textit{número de fotones que se emiten por segundo}.
+				\item[b)] Las salanganas %y \textit{vencejos de cueva} 
+			son pájaros tropicales que vuelan en completa oscuridad gracias al fenómeno de ecolocalización: pueden detectar la difracción producida por obstáculos tras emitir ondas sonoras sobre ellos. Uno de estos pájaros puede emitir con una frecuencia máxima de $8\cdot 10^3\; Hz$, ¿cuál es el \textit{orden de magnitud de la longitud} del objeto más pequeño que puede detectar en su vuelo?
+			\end{itemize}
+		\qed
+		
+		%ondas banda not-sob.
+		\item En un estadio de fútbol es común que el público haga «la ola» si está de buen rollo. Los espectadores levantan los brazos cada $10\;s$ y la ola producida es tal que cualesquiera dos de ellos sentados en la misma fila y separados por una distancia de $50\;m$ se mueven sincrónicamente. Modelizando esta propagación  como una onda armónica:
+		\begin{itemize}
+		\item[a)] ¿Qué \textit{tipo de polarización} presenta? Calcula su \textit{longitud de onda}.			
+		\item[b)] Las manos de cada espectador, al pasar la ola y levantarse, se mueven verticalmente $1\;m$ desde el punto más bajo al más alto. Escribe una posible \textit{función} para la onda que se propaga en una misma fila asumiendo que $y(0,0)=0$.
+		\end{itemize}
+		\qed
+		
+\end{enumerate}		
+ 
+\end{document}
+

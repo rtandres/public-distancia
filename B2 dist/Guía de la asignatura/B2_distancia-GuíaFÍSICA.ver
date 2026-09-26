@@ -1,0 +1,26 @@
+\begin {longtable}{@{}ll>{\hsize =\vhAuthorColWidth }X>{\hsize =\vhChangeColWidth }X@{}}
+\textbf {\vhversionname }
+ & \textbf {\vhdatename }
+ & \textbf {\vhauthorname }
+ & \textbf {\vhchangename }\\[1ex]
+1.0
+ & 08.09.22
+ & \listset {R. Torres}
+ & Liberado para su publicación.\\
+1.2
+ & 08.09.23
+ & \listset {R. Torres}
+ & Eliminado el {\footnotesize QR} para matriculación, suprimida cualquier referencia a {\footnotesize CIDEAD}. Añadidos comentarios respecto a cuestionarios de evaluación \textit {online} y sobre exámenes anticipados.\\
+1.3
+ & 05.09.24
+ & \listset {R. Torres}
+ & Incluidos comentarios explícitos acerca de las matrículas parciales y la gestión de las tutorías.\\
+1.4
+ & 15.09.25
+ & \listset {R. Torres}
+ & Cambios en la calificación de los ejercicios entregables.\\
+1.5
+ & 07.09.26
+ & \listset {R. Torres}
+ & Mención explícita al carácter de guía de la tutoría, así como de que no es una clase de teoría.\\
+\end {longtable}
